@@ -7,6 +7,8 @@
 **Mariothedog** - Code\
 **aZaamBie** - Code and Art\
 **Bailey Burnsed** - Code and Art\
-**Muhammad Akbar Basit** - Audio
+**Muhammad Akbar Basit** - Audio\
+**SpellMender** - Designer
+
 
 ## To do
