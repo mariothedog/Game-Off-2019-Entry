@@ -5,9 +5,12 @@ const GRAVITY = Vector2(0, 400)
 export var SPEED = 300
 export var ACCEL = 0.1
 export var DEACCEL = 0.9
+export var JUMP_SPEED = 300
 
 var velocity = Vector2()
 var target_vel = Vector2()
+
+var jump = false
 
 func _physics_process(delta):
 	input()
@@ -21,6 +24,10 @@ func input():
 	if Input.is_action_pressed("move_left"):
 		input_vel.x -= 1
 	
+	jump = false
+	if Input.is_action_just_pressed("jump"):
+		jump = true
+	
 	target_vel = input_vel.normalized() * SPEED
 
 func movement(delta):
@@ -31,5 +38,7 @@ func movement(delta):
 	else:
 		velocity.x = lerp(velocity.x, target_vel.x, DEACCEL)
 
-	print(position)
-	move_and_slide(velocity)
+	if jump and is_on_floor():
+		velocity.y = -JUMP_SPEED
+	
+	move_and_slide(velocity, Vector2.UP)
