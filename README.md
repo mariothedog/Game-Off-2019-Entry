@@ -15,5 +15,7 @@
 
 2. Game focussed entirely on **leap**ing (metaphorical boundary) where the terrain moves on its own (or the player moves at a constant speed). Could be a platformer or some other type of game.
 
+3. Game where you ***can't*** jump.
+
 ## To do
 - Idea!
