@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-export var SPEED = 160
+const GRAVITY = Vector2(0, 400)
+
+export var SPEED = 300
 export var ACCEL = 0.1
 export var DEACCEL = 0.9
 
@@ -9,7 +11,7 @@ var target_vel = Vector2()
 
 func _physics_process(delta):
 	input()
-	movement()
+	movement(delta)
 
 func input():
 	var input_vel = Vector2()
@@ -21,11 +23,13 @@ func input():
 	
 	target_vel = input_vel.normalized() * SPEED
 
-func movement():
+func movement(delta):
+	velocity += GRAVITY * delta
+	
 	if abs(target_vel.x) > abs(velocity.x):
-		velocity = lerp(velocity, target_vel, ACCEL)
+		velocity.x = lerp(velocity.x, target_vel.x, ACCEL)
 	else:
-		velocity = lerp(velocity, target_vel, DEACCEL)
+		velocity.x = lerp(velocity.x, target_vel.x, DEACCEL)
 
 	print(position)
 	move_and_slide(velocity)
