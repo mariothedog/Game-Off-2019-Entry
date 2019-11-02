@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-const GRAVITY = Vector2(0, 400)
+const GRAVITY = Vector2(0, 1300)
 
 export var SPEED = 300
 export var ACCEL = 0.1
 export var DEACCEL = 0.9
-export var JUMP_SPEED = 300
+export var JUMP_SPEED = 500
 
 var velocity = Vector2()
 var target_vel = Vector2()
