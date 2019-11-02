@@ -19,5 +19,7 @@
 
 4. Player starts in a confined area with a size that can be increased through upgrades.
 
+5. A more interpretive game where the player must help NPCs in their personal growth; performing seemingly small tasks for them, but ultimately having a great impact on their character. In all, they progress by leaps and bounds, and as the game goes on, it shows more and more how big a difference you're really making in their lives.
+
 ## To do
 - Idea!
