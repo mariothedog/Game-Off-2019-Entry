@@ -49,11 +49,8 @@ text = "Name Here"
 align = 1
 
 [node name="Play" type="Label" parent="MarginContainer/VBoxContainer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -392.0
 margin_top = 258.0
-margin_right = 392.0
+margin_right = 784.0
 margin_bottom = 409.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

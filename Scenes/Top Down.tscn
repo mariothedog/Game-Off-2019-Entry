@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Tile Sets/Top Down Basic.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/TopDownPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+
 
 [node name="Top Down" type="Node2D"]
 
