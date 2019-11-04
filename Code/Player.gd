@@ -3,13 +3,21 @@ extends KinematicBody2D
 export var SPEED = 400
 export var ACCEL = 0.1
 export var DEACCEL = 0.7
+export var WATER_RESISTANCE = 0.7
 
 var velocity = Vector2()
 var target_vel = Vector2()
 
+var map
+
 func _physics_process(_delta):
 	input()
 	movement()
+	
+	if map:
+		var tile = map.get_cellv(map.world_to_map(position))
+		if tile == 2: # 2 is the water tile
+			velocity *= WATER_RESISTANCE
 
 func input():
 	var input_vel = Vector2()
