@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Play_Button_pressed():
-	get_tree().change_scene("res://Scenes/Top Down.tscn")
+	get_tree().change_scene("res://Scenes/Level.tscn")
 
 func _on_Play_Button_mouse_entered():
 	$MarginContainer/VBoxContainer/Play.add_color_override("font_color", Color(0.3, 0.3, 0.3))
