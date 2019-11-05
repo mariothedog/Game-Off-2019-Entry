@@ -19,6 +19,7 @@ texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 
 [node name="Affection Background" type="TextureRect" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
