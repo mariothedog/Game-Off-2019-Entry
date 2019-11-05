@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background.png-8af4bb7bfaab9ffeb518bd74d95b8187.stex"
+path="res://.import/Affection Menu Background.png-cef48634260a365056c5eb1926d30902.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/UI/Background.png"
-dest_files=[ "res://.import/Background.png-8af4bb7bfaab9ffeb518bd74d95b8187.stex" ]
+source_file="res://Art/Placeholder/UI/Affection Menu Background.png"
+dest_files=[ "res://.import/Affection Menu Background.png-cef48634260a365056c5eb1926d30902.stex" ]
 
 [params]
 
