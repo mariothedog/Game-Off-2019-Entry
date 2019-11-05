@@ -1,7 +1,8 @@
 extends Control
 
 func _on_Play_Button_pressed():
-	get_tree().change_scene("res://Scenes/Level.tscn")
+	if get_tree().change_scene("res://Scenes/Level.tscn") != OK:
+		print_debug("An error occured when trying to switch from the Main Menu scene to the level scene.")
 
 func _on_Play_Button_mouse_entered():
 	$MarginContainer/VBoxContainer/Play.add_color_override("font_color", Color(0.3, 0.3, 0.3))
