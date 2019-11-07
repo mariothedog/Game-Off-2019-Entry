@@ -3,21 +3,19 @@ extends KinematicBody2D
 export var SPEED = 400
 export var ACCEL = 0.1
 export var DEACCEL = 0.7
-export var WATER_RESISTANCE = 0.7
+export var JUMP_SPEED = 600
+export var GRAVITY = Vector2(0, 1300)
 
 var velocity = Vector2()
 var target_vel = Vector2()
 
+var jump = false
+
 var map
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	input()
-	movement()
-	
-	if map:
-		var tile = map.get_cellv(map.world_to_map(position))
-		if tile == 2: # 2 is the water tile
-			velocity *= WATER_RESISTANCE
+	movement(delta)
 
 func input():
 	var input_vel = Vector2()
@@ -26,22 +24,22 @@ func input():
 		input_vel.x += 1
 	if Input.is_action_pressed("move_left"):
 		input_vel.x -= 1
-	if Input.is_action_pressed("move_up"):
-		input_vel.y -= 1
-	if Input.is_action_pressed("move_down"):
-		input_vel.y += 1
+	
+	jump = false
+	if Input.is_action_just_pressed("jump"):
+		jump = true
 	
 	target_vel = input_vel.normalized() * SPEED
 
-func movement():
+func movement(delta):
+	velocity += GRAVITY * delta
+	
 	if abs(target_vel.x) > abs(velocity.x):
 		velocity.x = lerp(velocity.x, target_vel.x, ACCEL)
 	else:
 		velocity.x = lerp(velocity.x, target_vel.x, DEACCEL)
 	
-	if abs(target_vel.y) > abs(velocity.y):
-		velocity.y = lerp(velocity.y, target_vel.y, ACCEL)
-	else:
-		velocity.y = lerp(velocity.y, target_vel.y, DEACCEL)
+	if jump and is_on_floor():
+		velocity.y = -JUMP_SPEED
 	
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)

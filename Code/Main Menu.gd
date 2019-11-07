@@ -1,7 +1,7 @@
 extends Control
 
 func _on_Play_Button_pressed():
-	if get_tree().change_scene("res://Scenes/Level.tscn") != OK:
+	if get_tree().change_scene("res://Scenes/Level 1.tscn") != OK:
 		print_debug("An error occured when trying to switch from the Main Menu scene to the level scene.")
 
 func _on_Play_Button_mouse_entered():
