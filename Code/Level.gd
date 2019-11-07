@@ -7,6 +7,8 @@ func _draw(): # For debugging
 func _process(_delta):
 	update()
 
-func _on_Player_jump():
+func _on_Player_jump(duration):
 	var jump_dir = (get_global_mouse_position() - $Player.position).normalized()
-	$Player.velocity = jump_dir * $Player.JUMP_SPEED
+	var multi = 1 + duration/2
+	multi = min(multi, 1.4)
+	$Player.velocity = jump_dir * $Player.JUMP_SPEED * multi
