@@ -21,6 +21,9 @@ func _process(delta):
 		hold_duration += delta
 	
 	$"Jump Bar".value = hold_duration/0.8*100
+	if $"Jump Bar".value >= 100:
+		emit_signal("jump", hold_duration)
+		hold_duration = 0
 
 func _input(event):
 	if event is InputEventMouseButton:
