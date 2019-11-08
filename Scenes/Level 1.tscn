@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Code/Level.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Tiles/Tile Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Pit_Sensor.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -104,4 +105,7 @@ position = Vector2( 0, -40 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
+[node name="Pit sensor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80.5846, 330.486 )
+scale = Vector2( 6.25, 4 )
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
