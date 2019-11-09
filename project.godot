@@ -55,6 +55,14 @@ low_gravity={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="floor"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="platform"
+2d_physics/layer_4="player"
+2d_physics/layer_5="sensor"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
