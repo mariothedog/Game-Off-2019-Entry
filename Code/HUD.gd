@@ -1,4 +1,4 @@
 extends CanvasLayer
 
-func _process(delta):
+func _process(_delta):
 	$"Coin Amount".text = str(global.coins)
