@@ -8,9 +8,17 @@ export var JUMP_SPEED = 700
 export var GRAVITY = Vector2(0, 1300)
 export var GROUND_RESISTANCE = 0.11
 export var AIR_RESISTANCE = 0.01
+export var LOW_GRAVITY = Vector2(0, 400)
 
 var hold_duration = 0
 var velocity = Vector2()
+var is_low_gravity = false
+var gravity_moment = GRAVITY #gravity active
+var can_low_gravity = false #only can if skill activate.
+
+#to set skill outside this class
+func set_low_gravity_skill(a):
+	can_low_gravity = a
 
 var jump_particles = preload("res://Scenes/Jump Particles.tscn")
 
@@ -28,15 +36,30 @@ func _process(delta):
 	if $"Jump Bar".value >= 100:
 		emit_signal("jump", hold_duration)
 		hold_duration = 0
+		if is_low_gravity and $timer_low_gravity.is_stopped():
+			print("holaaa")
+			$timer_low_gravity.start()
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.is_pressed() and is_on_floor():
 			emit_signal("jump", hold_duration)
 			hold_duration = 0
+			if is_low_gravity and $timer_low_gravity.is_stopped():
+				$timer_low_gravity.start()
+
+	var pressed = Input.is_action_pressed("low_gravity")
+	if pressed and can_low_gravity:
+		gravity_moment = LOW_GRAVITY
+		is_low_gravity = true
+	elif pressed and is_low_gravity:
+		#The player can stop its skill
+		gravity_moment = GRAVITY
+		is_low_gravity = false
+		$timer_low_gravity.stop()
 
 func movement(delta):
-	velocity += GRAVITY * delta
+	velocity += gravity_moment * delta
 	
 	if is_on_floor():
 		velocity.x = lerp(velocity.x, 0, GROUND_RESISTANCE)
@@ -47,6 +70,13 @@ func movement(delta):
 
 func animate():
 	pass
+
+#Timeout that controls the low gravity
+#This sets the length of time this skill
+func _on_low_gravity_timeout():
+	gravity_moment = GRAVITY
+	is_low_gravity = false
+	print("caracola")
 
 func pickup_coin(body):
 	if body.name == "Player":
