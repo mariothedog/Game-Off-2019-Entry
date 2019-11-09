@@ -74,8 +74,13 @@ func movement(delta):
 	if is_on_floor():
 		velocity.x = lerp(velocity.x, 0, GROUND_RESISTANCE)
 		is_double_jump = false
+		$AnimatedSprite.play("idle")
 	else:
 		velocity.x = lerp(velocity.x, 0, AIR_RESISTANCE)
+		$AnimatedSprite.play("jump")
+	$AnimatedSprite.flip_h = velocity.x < 0
+	
+		
 		
 	
 	
