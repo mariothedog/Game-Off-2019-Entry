@@ -5,7 +5,7 @@ func _ready():
 	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.4,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Transition.start()
-	$Player.set_low_gravity_skill(true)
+	$Player.set_double_jump_skill(true)
 
 func _draw(): # For debugging
 	var mouse_pos = get_global_mouse_position()
