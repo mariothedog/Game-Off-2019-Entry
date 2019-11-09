@@ -19,6 +19,10 @@ config/name="Game-Off-2019-Entry"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://Code/global.gd"
+
 [importer_defaults]
 
 texture={

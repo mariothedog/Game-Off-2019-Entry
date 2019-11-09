@@ -43,3 +43,7 @@ func movement(delta):
 
 func animate():
 	pass
+
+func pickup_coin(body):
+	if body.name == "Player":
+		global.coins += 1
