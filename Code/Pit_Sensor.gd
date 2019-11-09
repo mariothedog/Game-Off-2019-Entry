@@ -7,6 +7,7 @@ func _on_Pit_sensor_body_entered(body):
 		$Transition.interpolate_property(get_parent(), "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.35,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Transition.start()
+		print("holaaaa")
 
 func _on_Transition_Timer_timeout():
 	if get_tree().reload_current_scene() != OK:

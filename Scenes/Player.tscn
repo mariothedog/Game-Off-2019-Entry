@@ -30,3 +30,7 @@ rect_rotation = -90.0
 rect_scale = Vector2( 0.32, 0.4 )
 texture_progress = ExtResource( 3 )
 
+[node name="timer_low_gravity" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="timeout" from="timer_low_gravity" to="." method="_on_low_gravity_timeout"]
