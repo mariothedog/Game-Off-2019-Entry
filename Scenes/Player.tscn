@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Code/Player.gd" type="Script" id=1]
-[ext_resource path="res://Art/Placeholder/Player/Player.png" type="Texture" id=2]
-[ext_resource path="res://Art/Placeholder/UI/Jump Bar.png" type="Texture" id=3]
+[ext_resource path="res://Art/Placeholder/UI/Jump Bar.png" type="Texture" id=2]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/idle/anim1.png" type="Texture" id=3]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/idle/anim2.png" type="Texture" id=4]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/idle/anim3.png" type="Texture" id=5]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/idle/anim4.png" type="Texture" id=6]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/jump/anim8.png" type="Texture" id=7]
+[ext_resource path="res://Art/Placeholder/generic_platformer_pack__bakudas/Player/jump/anim11.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28, 22 )
+extents = Vector2( 17.315, 28.5737 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -14,11 +32,8 @@ script = ExtResource( 1 )
 current = true
 limit_left = -550
 
-[node name="Sprite" type="Sprite" parent="."]
-z_index = -1
-texture = ExtResource( 2 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.291992, 0.291988 )
 shape = SubResource( 1 )
 
 [node name="Jump Bar" type="TextureProgress" parent="."]
@@ -28,5 +43,17 @@ margin_right = 195.0
 margin_bottom = -8.99997
 rect_rotation = -90.0
 rect_scale = Vector2( 0.32, 0.4 )
-texture_progress = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
 
+[node name="timer_low_gravity" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.145973, -3.8147e-06 )
+scale = Vector2( 1.75652, 1.78472 )
+frames = SubResource( 2 )
+animation = "jump"
+frame = 1
+playing = true
+[connection signal="timeout" from="timer_low_gravity" to="." method="_on_low_gravity_timeout"]
