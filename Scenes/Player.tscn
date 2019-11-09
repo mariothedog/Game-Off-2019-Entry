@@ -30,3 +30,4 @@ rect_rotation = -90.0
 rect_scale = Vector2( 0.32, 0.4 )
 texture_progress = ExtResource( 3 )
 
+[connection signal="jump" from="." to="." method="_on_Player_jump"]
