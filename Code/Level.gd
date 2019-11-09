@@ -1,8 +1,9 @@
 extends Node2D
 
 func _ready():
+	$Player.map = $TileMap
 	modulate.a = 0
-	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.4,
+	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.2,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Transition.start()
 	$Player.set_double_jump_skill(true)

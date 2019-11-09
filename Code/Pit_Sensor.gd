@@ -12,6 +12,7 @@ func _on_Pit_sensor_body_entered(body):
 		
 		
 
-func _on_Transition_Timer_timeout():
-	if get_tree().reload_current_scene() != OK:
-		print_debug("An error occured when trying to reload the current scene at Pit_Sensor.gd.")
+func _process(_delta):
+	if get_parent().modulate.a <= 0:
+		if get_tree().reload_current_scene() != OK:
+			print_debug("An error occured when trying to reload the current scene at Pit_Sensor.gd.")
