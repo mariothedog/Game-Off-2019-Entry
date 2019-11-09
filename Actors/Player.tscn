@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Code/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/UI/Jump Bar.png" type="Texture" id=2]
@@ -6,21 +6,23 @@
 [ext_resource path="res://Art/Placeholder/Player/aventurer_player/idle/adventurer-idle-01.png" type="Texture" id=4]
 [ext_resource path="res://Art/Placeholder/Player/aventurer_player/idle/adventurer-idle-02.png" type="Texture" id=5]
 [ext_resource path="res://Art/Placeholder/Player/aventurer_player/idle/adventurer-idle-03.png" type="Texture" id=6]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-slide-00.png" type="Texture" id=7]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-slide-01.png" type="Texture" id=8]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-00.png" type="Texture" id=9]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-01.png" type="Texture" id=10]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-02.png" type="Texture" id=11]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-03.png" type="Texture" id=12]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/fall/adventurer-fall-00.png" type="Texture" id=13]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/fall/adventurer-fall-01.png" type="Texture" id=14]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-02.png" type="Texture" id=15]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-03.png" type="Texture" id=16]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-04.png" type="Texture" id=17]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-05.png" type="Texture" id=18]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-06.png" type="Texture" id=19]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/wall/adventurer-wall-slide-00.png" type="Texture" id=20]
-[ext_resource path="res://Art/Placeholder/Player/aventurer_player/wall/adventurer-wall-slide-01.png" type="Texture" id=21]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-00.png" type="Texture" id=7]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-01.png" type="Texture" id=8]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-02.png" type="Texture" id=9]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/jump/adventurer-jump-03.png" type="Texture" id=10]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-smrslt-00.png" type="Texture" id=11]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-smrslt-01.png" type="Texture" id=12]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-smrslt-02.png" type="Texture" id=13]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/hurt/adventurer-smrslt-03.png" type="Texture" id=14]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/wall/adventurer-wall-slide-00.png" type="Texture" id=15]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/wall/adventurer-wall-slide-01.png" type="Texture" id=16]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/fall/adventurer-fall-00.png" type="Texture" id=17]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/fall/adventurer-fall-01.png" type="Texture" id=18]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-02.png" type="Texture" id=19]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-03.png" type="Texture" id=20]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-04.png" type="Texture" id=21]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-05.png" type="Texture" id=22]
+[ext_resource path="res://Art/Placeholder/Player/aventurer_player/die/adventurer-die-06.png" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.9243, 34.4136 )
@@ -32,29 +34,29 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "wall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "die",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "wall",
 "speed": 5.0
 } ]
 
@@ -88,7 +90,7 @@ position = Vector2( 7.1996, -5.98738 )
 scale = Vector2( 2.73575, 2.86642 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 [connection signal="timeout" from="timer_low_gravity" to="." method="_on_low_gravity_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -15,10 +15,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5.54315, 10.8207 )
+extents = Vector2( 5.54315, 9.42679 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 11.9747, 19.159 )
+extents = Vector2( 12.6183, 17.3348 )
 
 [node name="eye_demon" type="StaticBody2D"]
 collision_layer = 2
@@ -43,7 +43,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 3.05176e-05, -1.79622 )
+position = Vector2( -0.715544, -0.640288 )
 scale = Vector2( 1.08, 1 )
 shape = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

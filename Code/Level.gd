@@ -19,6 +19,7 @@ func _on_Player_jump(duration):
 	var multi = 1 + duration/2
 	multi = min(multi, 1.4)
 	$Player.velocity = jump_dir * $Player.JUMP_SPEED * multi
+	$Player.set_jump_dir(jump_dir)
 
 func _on_Player_health(health):
 	if health <=0:

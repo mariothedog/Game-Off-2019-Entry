@@ -22,6 +22,7 @@ var can_low_gravity = false #only can if skill activate.
 var can_double_jump = false #only can if skill activate.
 var is_animate = false
 var is_hurt = false
+var last_jump_dir_x = 0
 
 #All function public to call outside the class
 
@@ -29,6 +30,11 @@ var is_hurt = false
 #For example when the player it falls by precipice
 func animate(animation):
 	$AnimatedSprite.play(animation)
+	
+func set_jump_dir(dir):
+	if dir.x != last_jump_dir_x:
+		$AnimatedSprite.flip_h = dir.x < 0
+		last_jump_dir_x = dir.x
 	
 #Called when it is cath by any enemy.
 func add_damage(damage):
@@ -107,12 +113,20 @@ func movement(delta):
 		if HEALTH > 0 and not is_animate:
 			$AnimatedSprite.play("jump")
 		
-	$AnimatedSprite.flip_h = velocity.x < 0
+		
+		
+	
 	if is_hurt:
+		print(hold_duration)
 		is_hurt = false
-		emit_signal("jump", 10)
-	else:
-		velocity = move_and_slide(velocity, Vector2.UP)
+		if $AnimatedSprite.flip_h:
+			velocity.x = 600
+		else:
+			velocity.x = -600
+		
+		
+	
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 
 #Timeout that controls the low gravity
