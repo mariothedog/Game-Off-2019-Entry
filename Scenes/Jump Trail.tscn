@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-00.png" type="Texture" id=1]
+[ext_resource path="res://Code/Jump Trail.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+
+[node name="Jump Trail" type="Particles2D"]
+z_index = -2
+amount = 1
+process_material = SubResource( 1 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+

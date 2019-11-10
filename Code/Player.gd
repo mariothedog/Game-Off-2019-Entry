@@ -3,7 +3,8 @@ extends KinematicBody2D
 signal jump
 signal update_healthbar
 
-var jump_particles = preload("res://Scenes/Dust Particles.tscn")
+var dust_particles = preload("res://Scenes/Dust Particles.tscn")
+var jump_trail = preload("res://Scenes/Jump Trail.tscn")
 
 #warning-ignore:unused_class_variable
 # JUMP_SPEED is used in Level.gd
@@ -175,19 +176,19 @@ func _on_Player_jump(_duration, _jump_dir):
 		
 		var tile_below_name = map.tile_set.tile_get_name(tile_below)
 		
-		var j_p = jump_particles.instance()
-		j_p.process_material.color = global.tile_colors[tile_below_name].darkened(0.2)
+		var d_p = dust_particles.instance()
+		d_p.process_material.color = global.tile_colors[tile_below_name].darkened(0.2)
 		var pos = map.map_to_world(map_pos_below)
 		pos.x = position.x
-		j_p.position = pos
+		d_p.position = pos
 		if (get_global_mouse_position()-position).x > 0:
-			j_p.rotation_degrees = 0
-			j_p.process_material.gravity.y = 20
+			d_p.rotation_degrees = 0
+			d_p.process_material.gravity.y = 20
 		else:
-			j_p.rotation_degrees = 180
-			j_p.process_material.gravity.y = -20
-		j_p.emitting = true
-		get_parent().add_child(j_p)
+			d_p.rotation_degrees = 180
+			d_p.process_material.gravity.y = -20
+		d_p.emitting = true
+		get_parent().add_child(d_p)
 
 func _on_Low_Gravity_Timer_timeout():
 	low_gravity_enabled = false
@@ -202,3 +203,10 @@ func _on_AnimatedSprite_animation_finished():
 		$AnimatedSprite.stop()
 		$AnimatedSprite.frame = 4
 		die()
+
+func _on_Jump_Trail_Cooldown_timeout():
+	# Jump Trail Effect
+	if $AnimatedSprite.animation == "jump":
+		var j_t = jump_trail.instance()
+		j_t.position = position
+		get_parent().add_child(j_t)
