@@ -6,16 +6,16 @@
 extents = Vector2( 194.631, 19.8657 )
 
 [node name="Pit sensor" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Transition Timer" type="Timer" parent="."]
-wait_time = 0.6
 one_shot = true
 
 [node name="Transition" type="Tween" parent="."]
-
 [connection signal="body_entered" from="." to="." method="_on_Pit_sensor_body_entered"]
 [connection signal="timeout" from="Transition Timer" to="." method="_on_Transition_Timer_timeout"]
