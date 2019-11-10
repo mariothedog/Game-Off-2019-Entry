@@ -54,7 +54,6 @@ func add_health(health):
 	is_animate = true
 	emit_signal("health", HEALTH)
 	
-
 #To set low gravity skill outside this class
 func set_low_gravity_skill(s):
 	can_low_gravity = s
@@ -63,6 +62,10 @@ func set_low_gravity_skill(s):
 func set_double_jump_skill(s):
 	can_double_jump = s
 	
+var jump_particles = preload("res://Scenes/Jump Particles.tscn")
+
+var map
+
 func _physics_process(delta):
 	movement(delta)
 	
@@ -135,11 +138,48 @@ func _on_low_gravity_timeout():
 	gravity_moment = GRAVITY
 	is_low_gravity = false
 
-
-
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.get_animation() == "die":
 		$AnimatedSprite.stop()
 		$AnimatedSprite.frame = 4
 		
 	is_animate = false
+
+func pickup_coin(body):
+	if body.name == "Player":
+		global.coins += 1
+
+func _on_Player_jump(_duration):
+	var mouse_pos_offsetted = get_global_mouse_position() - position
+	if mouse_pos_offsetted.y > 0:
+		return
+	
+	if map:
+		var map_pos_below = map.world_to_map(position)
+		map_pos_below.y += 1
+		var tile_below = map.get_cellv(map_pos_below)
+		
+		# If player is standing on the edge of a tile
+		if tile_below == -1: # Empty tile
+			map_pos_below.x -= 1 # Check tile to the left
+			tile_below = map.get_cellv(map_pos_below)
+			
+			if tile_below == -1:
+				map_pos_below.x += 2 # Check tile to the right
+				tile_below = map.get_cellv(map_pos_below)
+		
+		var tile_below_name = map.tile_set.tile_get_name(tile_below)
+		
+		var j_p = jump_particles.instance()
+		j_p.process_material.color = global.tile_colors[tile_below_name].darkened(0.2)
+		var pos = map.map_to_world(map_pos_below)
+		pos.x = position.x
+		j_p.position = pos
+		if (get_global_mouse_position()-position).x > 0:
+			j_p.rotation_degrees = 0
+			j_p.process_material.gravity.y = 20
+		else:
+			j_p.rotation_degrees = 180
+			j_p.process_material.gravity.y = -20
+		j_p.emitting = true
+		get_parent().add_child(j_p)
