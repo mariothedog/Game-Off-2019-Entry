@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 signal jump
+signal update_healthbar
+
+var jump_particles = preload("res://Scenes/Dust Particles.tscn")
 
 #warning-ignore:unused_class_variable
 # JUMP_SPEED is used in Level.gd
@@ -9,59 +12,96 @@ export var GRAVITY = Vector2(0, 1300)
 export var GROUND_RESISTANCE = 0.11
 export var AIR_RESISTANCE = 0.01
 export var LOW_GRAVITY = Vector2(0, 400)
+export var health = 100
 
 var hold_duration = 0
 var velocity = Vector2()
-var is_low_gravity = false
-var gravity_moment = GRAVITY #gravity active
-var can_low_gravity = false #only can if skill activate.
 
-#to set skill outside this class
-func set_low_gravity_skill(a):
-	can_low_gravity = a
+# Low Gravity skill
+var can_low_gravity = false
+var low_gravity_enabled = false
 
-var jump_particles = preload("res://Scenes/Jump Particles.tscn")
+# Double Jump skill
+var can_double_jump = false
+var jumps = 0
+var can_jump = true # When you auto jump due to the jump bar getting full it starts charging again on the double jump without any player input, this variable stops that
+
+# Animation variables
+var walk_jumping = false
+var is_hurt = false
+
+var dead = false
 
 var map
 
 func _physics_process(delta):
+	input()
 	movement(delta)
 	animate()
 
 func _process(delta):
-	if Input.is_action_pressed("jump") and is_on_floor():
-		hold_duration += delta
+	if Input.is_action_pressed("jump") and can_jump and not dead:
+		if can_double_jump:
+			if (is_on_floor() or jumps < 2):
+				hold_duration += delta
+		else:
+			if is_on_floor():
+				hold_duration += delta
 	
 	$"Jump Bar".value = hold_duration/0.8*100
 	if $"Jump Bar".value >= 100:
-		emit_signal("jump", hold_duration)
-		hold_duration = 0
-		if is_low_gravity and $timer_low_gravity.is_stopped():
-			print("holaaa")
-			$timer_low_gravity.start()
+		jump()
+
+func input():
+	if can_low_gravity:
+		if Input.is_action_just_pressed("low_gravity"):
+			low_gravity_enabled = true
+			if $"Low Gravity Timer".is_stopped():
+				$"Low Gravity Timer".start()
+			else:
+				low_gravity_enabled = false
+				$"Low Gravity Timer".stop()
+	if Input.is_action_just_pressed("take_damage"):
+		take_damage(10)
+	if Input.is_action_just_pressed("add_health"):
+		add_health(10)
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and not event.is_pressed() and is_on_floor():
-			emit_signal("jump", hold_duration)
-			hold_duration = 0
-			if is_low_gravity and $timer_low_gravity.is_stopped():
-				$timer_low_gravity.start()
+	if event is InputEventMouseButton and not dead:
+		if event.button_index == BUTTON_LEFT:
+			if not event.is_pressed() and can_jump:
+				if can_double_jump:
+					if (is_on_floor() or jumps < 2):
+						jump()
+				else:
+					if is_on_floor():
+						jump()
+			if event.is_pressed():
+				can_jump = true
 
-	var pressed = Input.is_action_pressed("low_gravity")
-	if pressed and can_low_gravity:
-		gravity_moment = LOW_GRAVITY
-		is_low_gravity = true
-	elif pressed and is_low_gravity:
-		#The player can stop its skill
-		gravity_moment = GRAVITY
-		is_low_gravity = false
-		$timer_low_gravity.stop()
+func jump():
+	var jump_dir = (get_global_mouse_position() - position).normalized()
+	emit_signal("jump", hold_duration, jump_dir)
+	hold_duration = 0
+	jumps += 1
+	can_jump = false
+	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
+		$AnimatedSprite.play("jump")
+		walk_jumping = false
+	else:
+		walk_jumping = true
+	is_hurt = false
 
 func movement(delta):
-	velocity += gravity_moment * delta
+	if low_gravity_enabled:
+		velocity += LOW_GRAVITY * delta
+	else:
+		velocity += GRAVITY * delta
 	
 	if is_on_floor():
+		if velocity.y > 0:
+			jumps = 0
+		
 		velocity.x = lerp(velocity.x, 0, GROUND_RESISTANCE)
 	else:
 		velocity.x = lerp(velocity.x, 0, AIR_RESISTANCE)
@@ -69,22 +109,51 @@ func movement(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func animate():
-	pass
+	if velocity.x != 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
+	
+	if not dead and not is_hurt:
+		if is_on_floor():
+			$AnimatedSprite.play("idle")
+		else:
+			if velocity.y >= 0 and not walk_jumping:
+				$AnimatedSprite.play("fall")
 
-#Timeout that controls the low gravity
-#This sets the length of time this skill
-func _on_low_gravity_timeout():
-	gravity_moment = GRAVITY
-	is_low_gravity = false
-	print("caracola")
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		dead = true
+		$AnimatedSprite.play("die")
+	else:
+		if is_on_floor():
+			is_hurt = true
+			$AnimatedSprite.play("hurt")
+	
+	emit_signal("update_healthbar", health, "dmg")
+
+func add_health(amount):
+	health += amount
+	health = min(100, health) # So the player can't get more than 100 health
+	
+	emit_signal("update_healthbar", health, "heal")
+
+func knockback(amount):
+	velocity += amount
+
+func die():
+	var transition = get_parent().get_node("Transition")
+	transition.interpolate_property(get_parent(), "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.35,
+	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	transition.start()
+	dead = true
 
 func pickup_coin(body):
 	if body.name == "Player":
 		global.coins += 1
 
-func _on_Player_jump(_duration):
+func _on_Player_jump(_duration, _jump_dir):
 	var mouse_pos_offsetted = get_global_mouse_position() - position
-	if mouse_pos_offsetted.y > 0:
+	if mouse_pos_offsetted.y > 0 or not is_on_floor():
 		return
 	
 	if map:
@@ -100,6 +169,9 @@ func _on_Player_jump(_duration):
 			if tile_below == -1:
 				map_pos_below.x += 2 # Check tile to the right
 				tile_below = map.get_cellv(map_pos_below)
+			
+			if tile_below == -1:
+				return
 		
 		var tile_below_name = map.tile_set.tile_get_name(tile_below)
 		
@@ -116,3 +188,17 @@ func _on_Player_jump(_duration):
 			j_p.process_material.gravity.y = -20
 		j_p.emitting = true
 		get_parent().add_child(j_p)
+
+func _on_Low_Gravity_Timer_timeout():
+	low_gravity_enabled = false
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "jump": # So the jump animation doesn't loop
+		$AnimatedSprite.stop()
+		$AnimatedSprite.frame = 1
+	elif $AnimatedSprite.animation == "hurt":
+		is_hurt = false
+	elif $AnimatedSprite.animation == "die":
+		$AnimatedSprite.stop()
+		$AnimatedSprite.frame = 4
+		die()
