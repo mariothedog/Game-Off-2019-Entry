@@ -22,4 +22,3 @@ lifetime = 0.4
 one_shot = true
 process_material = SubResource( 1 )
 script = ExtResource( 1 )
-

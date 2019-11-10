@@ -3,8 +3,6 @@
 [ext_resource path="res://Code/Coin.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pickupables/Coins.png" type="Texture" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 24 )
 
@@ -40,5 +38,4 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
-
 [connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]
