@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
 https://bakudas.itch.io/generic-platformer-pack
 https://opengameart.org/content/rotating-coin
 kenney.nl
+=======
+https://bakudas.itch.io/generic-platformer-pack
+>>>>>>> Stashed changes

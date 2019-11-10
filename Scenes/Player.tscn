@@ -89,6 +89,13 @@ texture_progress = ExtResource( 20 )
 wait_time = 5.0
 one_shot = true
 
+<<<<<<< Updated upstream
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Low Gravity Timer" to="." method="_on_Low_Gravity_Timer_timeout"]
+=======
+[node name="timer_low_gravity" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+[connection signal="timeout" from="timer_low_gravity" to="." method="_on_low_gravity_timeout"]
+>>>>>>> Stashed changes

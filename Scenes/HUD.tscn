@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Code/HUD.gd" type="Script" id=1]
@@ -8,10 +9,16 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 3 )
+=======
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Code/HUD.gd" type="Script" id=1]
+>>>>>>> Stashed changes
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
+<<<<<<< Updated upstream
 [node name="Coin" type="Sprite" parent="."]
 position = Vector2( 40, 40 )
 scale = Vector2( 3, 3 )
@@ -37,3 +44,5 @@ texture_progress = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="Health Bar"]
 
+=======
+>>>>>>> Stashed changes

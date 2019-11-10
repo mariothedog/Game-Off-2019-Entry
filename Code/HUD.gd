@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 extends CanvasLayer
 
 func _process(_delta):
@@ -8,3 +9,6 @@ func _on_Player_update_healthbar(value, type):
 	"value", $"Health Bar".value, value,
 	0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$"Health Bar/Tween".start()
+=======
+extends CanvasLayer
+>>>>>>> Stashed changes

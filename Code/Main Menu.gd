@@ -1,14 +1,8 @@
 extends Control
 
 func _on_Play_Button_pressed():
-	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.1,
-	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Transition.start()
-
-func _process(_delta):
-	if modulate.a <= 0:
-		if get_tree().change_scene("res://Scenes/Level 1.tscn") != OK:
-			print_debug("An error occured when trying to switch from the Main Menu scene to the level scene.")
+	if get_tree().change_scene("res://Scenes/Level 1.tscn") != OK:
+		print_debug("An error occured when trying to switch from the Main Menu scene to the level scene.")
 
 func _on_Play_Button_mouse_entered():
 	$MarginContainer/VBoxContainer/Play.add_color_override("font_color", Color(0.3, 0.3, 0.3))
