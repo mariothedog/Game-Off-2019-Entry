@@ -16,5 +16,6 @@ wait_time = 0.6
 one_shot = true
 
 [node name="Transition" type="Tween" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_Pit_sensor_body_entered"]
 [connection signal="timeout" from="Transition Timer" to="." method="_on_Transition_Timer_timeout"]
