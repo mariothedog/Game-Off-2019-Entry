@@ -10,8 +10,8 @@
 [ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-04.png" type="Texture" id=8]
 [ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-05.png" type="Texture" id=9]
 [ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-06.png" type="Texture" id=10]
-[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-02.png" type="Texture" id=11]
-[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-03.png" type="Texture" id=12]
+[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-00.png" type="Texture" id=11]
+[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-01.png" type="Texture" id=12]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=13]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-01.png" type="Texture" id=14]
 [ext_resource path="res://Art/Placeholder/Player/hurt/adventurer-hurt-00.png" type="Texture" id=15]
@@ -65,7 +65,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -89,6 +89,11 @@ texture_progress = ExtResource( 20 )
 wait_time = 5.0
 one_shot = true
 
+[node name="Jump Trail Cooldown" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Low Gravity Timer" to="." method="_on_Low_Gravity_Timer_timeout"]
+[connection signal="timeout" from="Jump Trail Cooldown" to="." method="_on_Jump_Trail_Cooldown_timeout"]
