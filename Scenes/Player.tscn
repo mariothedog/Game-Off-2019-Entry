@@ -5,13 +5,13 @@
 [ext_resource path="res://Art/Placeholder/Player/idle/adventurer-idle-01.png" type="Texture" id=3]
 [ext_resource path="res://Art/Placeholder/Player/idle/adventurer-idle-02.png" type="Texture" id=4]
 [ext_resource path="res://Art/Placeholder/Player/idle/adventurer-idle-03.png" type="Texture" id=5]
-[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-02.png" type="Texture" id=6]
-[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-03.png" type="Texture" id=7]
-[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-04.png" type="Texture" id=8]
-[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-05.png" type="Texture" id=9]
-[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-06.png" type="Texture" id=10]
-[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-00.png" type="Texture" id=11]
-[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-01.png" type="Texture" id=12]
+[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-00.png" type="Texture" id=6]
+[ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-01.png" type="Texture" id=7]
+[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-02.png" type="Texture" id=8]
+[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-03.png" type="Texture" id=9]
+[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-04.png" type="Texture" id=10]
+[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-05.png" type="Texture" id=11]
+[ext_resource path="res://Art/Placeholder/Player/die/adventurer-die-06.png" type="Texture" id=12]
 [ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-00.png" type="Texture" id=13]
 [ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-01.png" type="Texture" id=14]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=15]
@@ -28,14 +28,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
@@ -65,7 +65,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -92,7 +92,6 @@ one_shot = true
 [node name="Jump Trail Cooldown" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
-
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Low Gravity Timer" to="." method="_on_Low_Gravity_Timer_timeout"]

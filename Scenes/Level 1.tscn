@@ -144,6 +144,12 @@ tile_data = PoolIntArray( -196615, 3, 0, -196614, 1, 0, -196613, 1, 0, -196612, 
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -32, -30 )
+JUMP_SPEED = 700
+GRAVITY = Vector2( 0, 1300 )
+GROUND_RESISTANCE = 0.11
+AIR_RESISTANCE = 0.01
+LOW_GRAVITY = Vector2( 0, 400 )
+lives = 3
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -170,7 +176,7 @@ position = Vector2( 29.1216, -166.318 )
 position = Vector2( 177.09, -102.237 )
 
 [node name="Coin3" parent="Coins" instance=ExtResource( 6 )]
-position = Vector2( 347.196, -93.4983 )
+position = Vector2( 568.567, -7.86292 )
 
 [node name="Eye Demon" parent="." instance=ExtResource( 7 )]
 position = Vector2( -151.4, -49.2592 )

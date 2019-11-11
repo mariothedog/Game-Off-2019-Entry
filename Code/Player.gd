@@ -156,9 +156,8 @@ func die():
 	transition.start()
 	dead = true
 
-func pickup_coin(body):
-	if body.name == "Player":
-		global.coins += 1
+func pickup_coin():
+	global.coins += 1
 
 func _on_Player_jump(_duration, _jump_dir):
 	var mouse_pos_offsetted = get_global_mouse_position() - position
