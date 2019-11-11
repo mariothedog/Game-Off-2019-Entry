@@ -7,7 +7,7 @@ func _ready():
 	scale.x = sign(player.velocity.x)
 	texture = jump_texture
 
-func _process(delta):
+func _process(_delta):
 	modulate.a = lerp(modulate.a, 0, 0.23)
 	if modulate.a <= 0.01:
 		queue_free()

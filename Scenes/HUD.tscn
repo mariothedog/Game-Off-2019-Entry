@@ -3,7 +3,7 @@
 [ext_resource path="res://Code/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pickupables/Coins.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Art/Placeholder/UI/Jump Bar.png" type="Texture" id=4]
+[ext_resource path="res://Art/Placeholder/UI/Heart.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -25,15 +25,31 @@ margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 
-[node name="Health Bar" type="TextureProgress" parent="."]
+[node name="Lives" type="GridContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -214.0
-margin_top = 16.0
-margin_right = -14.0
-margin_bottom = 42.0
-value = 100.0
-texture_progress = ExtResource( 4 )
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = 10.0
+margin_right = 250.0
+margin_bottom = -434.0
+rect_scale = Vector2( -1, 1 )
+columns = 3
 
-[node name="Tween" type="Tween" parent="Health Bar"]
+[node name="Heart" type="TextureRect" parent="Lives"]
+margin_right = 63.0
+margin_bottom = 57.0
+texture = ExtResource( 4 )
+
+[node name="Heart2" type="TextureRect" parent="Lives"]
+margin_left = 67.0
+margin_right = 130.0
+margin_bottom = 57.0
+texture = ExtResource( 4 )
+
+[node name="Heart3" type="TextureRect" parent="Lives"]
+margin_left = 134.0
+margin_right = 197.0
+margin_bottom = 57.0
+texture = ExtResource( 4 )
 
