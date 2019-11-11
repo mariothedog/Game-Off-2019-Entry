@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var DAMAGE = 10
+export var DAMAGE = 1
 export var GRAVITY = Vector2(0, 1300)
 export var KNOCKBACK = Vector2(400, 0)
 

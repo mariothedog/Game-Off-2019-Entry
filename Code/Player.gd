@@ -13,7 +13,7 @@ export var GRAVITY = Vector2(0, 1300)
 export var GROUND_RESISTANCE = 0.11
 export var AIR_RESISTANCE = 0.01
 export var LOW_GRAVITY = Vector2(0, 400)
-export var health = 100
+export var lives = 3
 
 var hold_duration = 0
 var velocity = Vector2()
@@ -41,13 +41,16 @@ func _physics_process(delta):
 	animate()
 
 func _process(delta):
-	if Input.is_action_pressed("jump") and can_jump and not dead:
-		if can_double_jump:
-			if (is_on_floor() or jumps < 2):
-				hold_duration += delta
-		else:
-			if is_on_floor():
-				hold_duration += delta
+	if dead:
+		hold_duration = 0
+	else:
+		if Input.is_action_pressed("jump") and can_jump:
+			if can_double_jump:
+				if (is_on_floor() or jumps < 2):
+					hold_duration += delta
+			else:
+				if is_on_floor():
+					hold_duration += delta
 	
 	$"Jump Bar".value = hold_duration/0.8*100
 	if $"Jump Bar".value >= 100:
@@ -63,9 +66,9 @@ func input():
 				low_gravity_enabled = false
 				$"Low Gravity Timer".stop()
 	if Input.is_action_just_pressed("take_damage"):
-		take_damage(10)
+		take_damage(1)
 	if Input.is_action_just_pressed("add_health"):
-		add_health(10)
+		add_health(1)
 
 func _input(event):
 	if event is InputEventMouseButton and not dead:
@@ -121,8 +124,11 @@ func animate():
 				$AnimatedSprite.play("fall")
 
 func take_damage(amount):
-	health -= amount
-	if health <= 0:
+	if dead:
+		return
+	
+	lives -= amount
+	if lives <= 0:
 		dead = true
 		$AnimatedSprite.play("die")
 	else:
@@ -130,13 +136,15 @@ func take_damage(amount):
 			is_hurt = true
 			$AnimatedSprite.play("hurt")
 	
-	emit_signal("update_healthbar", health, "dmg")
+	emit_signal("update_healthbar", lives, "dmg")
 
 func add_health(amount):
-	health += amount
-	health = min(100, health) # So the player can't get more than 100 health
+	if dead:
+		return
 	
-	emit_signal("update_healthbar", health, "heal")
+	lives += amount
+	
+	emit_signal("update_healthbar", lives, "heal")
 
 func knockback(amount):
 	velocity += amount

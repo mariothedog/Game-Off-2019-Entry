@@ -16,3 +16,4 @@ anim_speed_random = 1.0
 [node name="coin_particles" type="Particles2D"]
 amount = 13
 process_material = SubResource( 1 )
+

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Exit Icon.png-3abc6d333feab35d6789c8e09749cde6.stex"
+path="res://.import/Heart.png-4aa290fcb5e636f4cc7b48b514847686.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/UI/Exit Icon.png"
-dest_files=[ "res://.import/Exit Icon.png-3abc6d333feab35d6789c8e09749cde6.stex" ]
+source_file="res://Art/Placeholder/UI/Heart.png"
+dest_files=[ "res://.import/Heart.png-4aa290fcb5e636f4cc7b48b514847686.stex" ]
 
 [params]
 
