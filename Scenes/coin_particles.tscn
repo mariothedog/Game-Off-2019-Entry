@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 40, 40, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 1.0
+color = Color( 0.819608, 0.847059, 0.294118, 1 )
+anim_speed_random = 1.0
+
+[node name="coin_particles" type="Particles2D"]
+amount = 13
+process_material = SubResource( 1 )

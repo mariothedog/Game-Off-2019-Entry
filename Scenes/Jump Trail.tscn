@@ -6,6 +6,7 @@
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
+angular_velocity = 1.55544e-43
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 3.0
@@ -16,4 +17,3 @@ amount = 1
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-
