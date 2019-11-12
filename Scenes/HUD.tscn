@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Code/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pickupables/Coins.png" type="Texture" id=2]
@@ -8,6 +8,108 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "damage"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.74902 ), Color( 1, 1, 1, 0.498039 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "heal"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "damage"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.74902 ), Color( 1, 1, 1, 0.498039 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "heal"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "damage"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.74902 ), Color( 1, 1, 1, 0.498039 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "heal"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -41,15 +143,27 @@ margin_right = 63.0
 margin_bottom = 57.0
 texture = ExtResource( 4 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lives/Heart"]
+anims/damage = SubResource( 2 )
+anims/heal = SubResource( 3 )
+
 [node name="Heart2" type="TextureRect" parent="Lives"]
 margin_left = 67.0
 margin_right = 130.0
 margin_bottom = 57.0
 texture = ExtResource( 4 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lives/Heart2"]
+anims/damage = SubResource( 4 )
+anims/heal = SubResource( 5 )
+
 [node name="Heart3" type="TextureRect" parent="Lives"]
 margin_left = 134.0
 margin_right = 197.0
 margin_bottom = 57.0
 texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lives/Heart3"]
+anims/damage = SubResource( 6 )
+anims/heal = SubResource( 7 )
 
