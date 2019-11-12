@@ -55,6 +55,7 @@ func _process(delta):
 	$"Jump Bar".value = hold_duration/0.8*100
 	if $"Jump Bar".value >= 100:
 		jump()
+	#print(lives)
 
 func input():
 	if can_low_gravity:
@@ -136,7 +137,7 @@ func take_damage(amount):
 			is_hurt = true
 			$AnimatedSprite.play("hurt")
 	
-	emit_signal("update_healthbar", lives, "dmg")
+	emit_signal("update_healthbar", -amount)
 
 func add_health(amount):
 	if dead:
@@ -144,7 +145,7 @@ func add_health(amount):
 	
 	lives += amount
 	
-	emit_signal("update_healthbar", lives, "heal")
+	emit_signal("update_healthbar", amount)
 
 func knockback(amount):
 	velocity += amount
