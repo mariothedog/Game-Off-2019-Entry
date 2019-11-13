@@ -2,6 +2,8 @@ extends Node
 
 #warning-ignore-all:unused_class_variable
 
+var player
+
 var coins = 0
 
 var tile_colors = {
