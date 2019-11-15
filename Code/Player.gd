@@ -35,6 +35,9 @@ var dead = false
 
 var map
 
+func _ready():
+	global.player = self
+
 func _physics_process(delta):
 	input()
 	movement(delta)
@@ -137,6 +140,7 @@ func take_damage(amount):
 			is_hurt = true
 			$AnimatedSprite.play("hurt")
 	
+	print("Lives: " + str(lives))
 	emit_signal("update_healthbar", -amount)
 
 func add_health(amount):
@@ -145,6 +149,7 @@ func add_health(amount):
 	
 	lives += amount
 	
+	print("Lives: " + str(lives))
 	emit_signal("update_healthbar", amount)
 
 func knockback(amount):

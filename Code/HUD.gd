@@ -1,27 +1,30 @@
 extends CanvasLayer
 
-var heart_animation_running = 0
+var heart = load("res://Scenes/Heart.tscn").instance()
 
 func _process(_delta):
 	$"Coin Amount".text = str(global.coins)
 
 func _on_Player_update_healthbar(amount):
-	var heart = $Lives.get_child(0).duplicate()
+	heart = heart.duplicate()
 	
-	if amount < 0:
+	if amount > 0: # Heal
+		for _i in range(amount):
+			$Lives.add_child(heart)
+			heart.get_child(0).play("heal")
+	else: # Damage
 		for _i in range(abs(amount)):
 			var lives_children = $Lives.get_children()
-			var removed_heart = lives_children[len(lives_children)-1-heart_animation_running]
-			var anim_player = removed_heart.get_child(0)
+			var animations_running = 0
+			for child in lives_children:
+				var plyr = child.get_child(0)
+				if plyr.is_playing():
+					animations_running += 1
+			
+			var hrt = lives_children[$Lives.get_child_count()-1-animations_running]
+			var anim_player = hrt.get_child(0)
+			
+			if hrt.to_be_freed: # This prevents a weird bug where it tries to queue_free() the same heart twice. It occurs if you spam damage the player a lot
+				$Lives.get_children().back().queue_free()
+			
 			anim_player.play("damage")
-			heart_animation_running += 1
-			yield(anim_player, "animation_finished")
-			print("this delete")
-			heart_animation_running -= 1
-			removed_heart.queue_free()
-	else:
-		for _i in range(amount):
-			print("add")
-			$Lives.add_child(heart)
-			var anim_player = heart.get_child(0)
-			anim_player.play("heal")
