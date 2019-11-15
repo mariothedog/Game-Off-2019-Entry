@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/shop/background_shop.png" type="Texture" id=1]
+
+[sub_resource type="Theme" id=1]
+
+[node name="shop" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -485.0
+margin_top = -185.0
+margin_right = 485.0
+margin_bottom = 185.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+margin_right = 970.0
+margin_bottom = 370.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 970.0
+margin_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_left = 465.0
+margin_right = 496.0
+margin_bottom = 370.0
+text = "OK"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer"]
+margin_left = 500.0
+margin_right = 504.0
+margin_bottom = 370.0
+theme = SubResource( 1 )
