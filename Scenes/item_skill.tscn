@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Code/item_skill.gd" type="Script" id=1]
+[ext_resource path="res://Art/Pickupables/Coins.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+font_data = ExtResource( 3 )
+
+[node name="item_skill" type="VBoxContainer"]
+margin_top = 176.0
+margin_right = 50.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 50, 50 )
+custom_constants/separation = 10
+alignment = 1
+script = ExtResource( 1 )
+
+[node name="img" type="TextureRect" parent="."]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = SubResource( 1 )
+stretch_mode = 6
+
+[node name="price" type="Label" parent="."]
+margin_top = 110.0
+margin_right = 100.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+[connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]

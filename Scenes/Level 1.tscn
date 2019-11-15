@@ -174,6 +174,5 @@ position = Vector2( 568.567, -7.86292 )
 
 [node name="Eye Demon" parent="." instance=ExtResource( 7 )]
 position = Vector2( -151.4, -49.2592 )
-
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]

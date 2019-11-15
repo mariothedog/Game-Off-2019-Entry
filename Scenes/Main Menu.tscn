@@ -74,7 +74,6 @@ enabled_focus_mode = 0
 flat = true
 
 [node name="Transition" type="Tween" parent="."]
-
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_pressed"]
