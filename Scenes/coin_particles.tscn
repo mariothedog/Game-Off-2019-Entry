@@ -7,6 +7,7 @@ flag_disable_z = true
 gravity = Vector3( 0, 30, 0 )
 initial_velocity = 50.0
 initial_velocity_random = 1.0
+angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale_random = 1.0
@@ -16,4 +17,3 @@ anim_speed_random = 1.0
 [node name="coin_particles" type="Particles2D"]
 amount = 13
 process_material = SubResource( 1 )
-
