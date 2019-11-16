@@ -58,7 +58,6 @@ func _process(delta):
 	$"Jump Bar".value = hold_duration/0.8*100
 	if $"Jump Bar".value >= 100:
 		jump()
-	#print(lives)
 
 func input():
 	if can_low_gravity:
@@ -72,7 +71,7 @@ func input():
 	if Input.is_action_just_pressed("take_damage"):
 		take_damage(1)
 	if Input.is_action_just_pressed("add_health"):
-		add_health(1)
+		add_life(1)
 
 func _input(event):
 	if event is InputEventMouseButton and not dead:
@@ -143,7 +142,7 @@ func take_damage(amount):
 	print("Lives: " + str(lives))
 	emit_signal("update_healthbar", -amount)
 
-func add_health(amount):
+func add_life(amount):
 	if dead:
 		return
 	
