@@ -30,3 +30,11 @@ func _on_item_skill_gui_input(event):
 
 func _on_ColorRect_mouse_entered():
 	pass # Replace with function body.
+
+
+func _on_logo_mouse_entered():
+	$logo/ColorRect.visible = true
+
+
+func _on_logo_mouse_exited():
+	$logo/ColorRect.visible = false

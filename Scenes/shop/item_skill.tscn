@@ -14,10 +14,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -592.127
-margin_top = -381.73
-margin_right = -442.127
-margin_bottom = -231.73
+margin_left = -66.4927
+margin_top = -126.926
+margin_right = 83.5073
+margin_bottom = 23.0744
 rect_min_size = Vector2( 150, 150 )
 size_flags_horizontal = 5
 size_flags_vertical = 5
@@ -37,7 +37,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 150 )
-color = Color( 0.290196, 0.278431, 0.278431, 0.407843 )
+color = Color( 0.207843, 0.184314, 0.184314, 0.333333 )
 
 [node name="price" type="Label" parent="."]
 margin_top = 119.0
@@ -54,5 +54,5 @@ position = Vector2( 79.1129, 83.0407 )
 emitting = false
 one_shot = true
 [connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]
-[connection signal="mouse_entered" from="." to="." method="_on_item_skill_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_item_skill_mouse_exited"]
+[connection signal="mouse_entered" from="logo" to="." method="_on_logo_mouse_entered"]
+[connection signal="mouse_exited" from="logo" to="." method="_on_logo_mouse_exited"]
