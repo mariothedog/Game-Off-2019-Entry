@@ -63,27 +63,28 @@ func _physics_process(delta):
 		animate()
 
 func _process(delta):
-	if dead:
-		hold_duration = 0
-	else:
-		if Input.is_action_pressed("jump"):
-			if can_jump:
-				if can_double_jump:
-					if (is_on_floor() or jumps < 2):
-						hold_duration += delta
+	if not global.freezing:
+		if dead:
+			hold_duration = 0
+		else:
+			if Input.is_action_pressed("jump"):
+				if can_jump:
+					if can_double_jump:
+						if (is_on_floor() or jumps < 2):
+							hold_duration += delta
+					else:
+						if is_on_floor() or stick_to_wall:
+							hold_duration += delta
+				if can_wall_grab and $"Wall Detection".is_colliding() and not force_stop_stick:
+					jumps = 0
+					can_jump = true
+					stick_to_wall = true
 				else:
-					if is_on_floor() or stick_to_wall:
-						hold_duration += delta
-			if can_wall_grab and $"Wall Detection".is_colliding() and not force_stop_stick:
-				jumps = 0
-				can_jump = true
-				stick_to_wall = true
-			else:
-				stick_to_wall = false
-	
-	$"Jump Bar".value = hold_duration/0.8*100
-	if $"Jump Bar".value >= 100:
-		jump()
+					stick_to_wall = false
+		
+		$"Jump Bar".value = hold_duration/0.8*100
+		if $"Jump Bar".value >= 100:
+			jump()
 
 func input():
 	if can_low_gravity:
