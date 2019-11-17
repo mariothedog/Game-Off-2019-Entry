@@ -13,3 +13,6 @@ var tile_colors = {
 	"Grass Edge": Color(0.42, 0.75, 0.19, 1),
 	"Ground Edge": Color(0.27, 0.16, 0.24, 1)
 	}
+	
+var skills = []
+var freezing = false

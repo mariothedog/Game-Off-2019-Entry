@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Code/item_skill.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/shop/particles_item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/shop/check.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -14,16 +19,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -66.4927
-margin_top = -126.926
-margin_right = 83.5073
-margin_bottom = 23.0744
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -362.0
+margin_bottom = -150.0
 rect_min_size = Vector2( 150, 150 )
 size_flags_horizontal = 5
 size_flags_vertical = 5
 script = ExtResource( 1 )
+skill = "double_jump"
+description = "Doble jump"
 
 [node name="logo" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_right = 150.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
@@ -39,6 +47,15 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 150 )
 color = Color( 0.207843, 0.184314, 0.184314, 0.333333 )
 
+[node name="Label" type="Label" parent="logo/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
 [node name="price" type="Label" parent="."]
 margin_top = 119.0
 margin_right = 150.0
@@ -50,9 +67,17 @@ text = "300"
 align = 1
 
 [node name="particles_items" parent="." instance=ExtResource( 4 )]
-position = Vector2( 79.1129, 83.0407 )
+position = Vector2( 120.253, 50.1055 )
+scale = Vector2( 0.72, 0.68 )
 emitting = false
 one_shot = true
+visibility_rect = Rect2( -23.4786, -12.5525, 45.1316, 87.6358 )
+
+[node name="check" type="Sprite" parent="."]
+visible = false
+position = Vector2( 125.264, 21.7124 )
+scale = Vector2( 0.693305, 0.706273 )
+texture = ExtResource( 5 )
 [connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]
-[connection signal="mouse_entered" from="logo" to="." method="_on_logo_mouse_entered"]
-[connection signal="mouse_exited" from="logo" to="." method="_on_logo_mouse_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_item_skill_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_item_skill_mouse_exited"]

@@ -17,10 +17,6 @@ func select_item(item):
 	$rest.visible = true
 	$rest.text = str(coins - item.price)
 
-
-func _on_item_skill_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_item_skill_mouse_exited():
-	pass # Replace with function body.
+func update_coins():
+	coins = global.coins
+	$price.text = str(coins)

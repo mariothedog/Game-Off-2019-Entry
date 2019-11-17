@@ -40,13 +40,27 @@ var dead = false
 
 var map
 
+func update_skill():
+	for skill in global.skills:
+		print(skill)
+		if skill == "grab_wall":
+			can_wall_grab  = true
+		elif skill == "double_jump":
+			can_double_jump = true
+		elif skill == "low_gravity":
+			can_low_gravity = true
+		elif skill == "inmunity": #this is opcional, only if it is acepted by everyone.
+			pass
+
+
 func _ready():
 	global.player = self
 
 func _physics_process(delta):
-	input()
-	movement(delta)
-	animate()
+	if not global.freezing:
+		input()
+		movement(delta)
+		animate()
 
 func _process(delta):
 	if dead:

@@ -4,6 +4,9 @@ var heart = load("res://Scenes/Heart.tscn").instance()
 
 func _process(_delta):
 	$"Coin Amount".text = str(global.coins)
+	var show_shop = Input.is_action_pressed("shop")
+	if show_shop:
+		$shop.visible = true
 
 func _on_Player_update_healthbar(amount):
 	heart = heart.duplicate()
