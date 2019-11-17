@@ -18,14 +18,19 @@ export var lives = 3
 var hold_duration = 0
 var velocity = Vector2()
 
-# Low Gravity skill
+# Low Gravity Skill
 var can_low_gravity = false
 var low_gravity_enabled = false
 
-# Double Jump skill
+# Double Jump Skill
 var can_double_jump = false
 var jumps = 0
 var can_jump = true # When you auto jump due to the jump bar getting full it starts charging again on the double jump without any player input, this variable stops that
+
+# Wall Grab Skill
+var can_wall_grab = false
+var stick_to_wall = false
+var force_stop_stick = false
 
 # Animation variables
 var walk_jumping = false
@@ -47,13 +52,20 @@ func _process(delta):
 	if dead:
 		hold_duration = 0
 	else:
-		if Input.is_action_pressed("jump") and can_jump:
-			if can_double_jump:
-				if (is_on_floor() or jumps < 2):
-					hold_duration += delta
+		if Input.is_action_pressed("jump"):
+			if can_jump:
+				if can_double_jump:
+					if (is_on_floor() or jumps < 2):
+						hold_duration += delta
+				else:
+					if is_on_floor() or stick_to_wall:
+						hold_duration += delta
+			if can_wall_grab and $"Wall Detection".is_colliding() and not force_stop_stick:
+				jumps = 0
+				can_jump = true
+				stick_to_wall = true
 			else:
-				if is_on_floor():
-					hold_duration += delta
+				stick_to_wall = false
 	
 	$"Jump Bar".value = hold_duration/0.8*100
 	if $"Jump Bar".value >= 100:
@@ -81,12 +93,15 @@ func _input(event):
 					if (is_on_floor() or jumps < 2):
 						jump()
 				else:
-					if is_on_floor():
+					if is_on_floor() or stick_to_wall:
 						jump()
 			if event.is_pressed():
 				can_jump = true
 
 func jump():
+	stick_to_wall = false
+	force_stop_stick = true
+	$"Force Stop Stick Timer".start()
 	var jump_dir = (get_global_mouse_position() - position).normalized()
 	emit_signal("jump", hold_duration, jump_dir)
 	hold_duration = 0
@@ -113,6 +128,9 @@ func movement(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0, AIR_RESISTANCE)
 	
+	if stick_to_wall:
+		velocity.y = 0
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func animate():
@@ -123,7 +141,9 @@ func animate():
 		if is_on_floor():
 			$AnimatedSprite.play("idle")
 		else:
-			if velocity.y >= 0 and not walk_jumping:
+			if stick_to_wall:
+				$AnimatedSprite.play("wall")
+			elif velocity.y >= 0 and not walk_jumping:
 				$AnimatedSprite.play("fall")
 
 func take_damage(amount):
@@ -139,7 +159,6 @@ func take_damage(amount):
 			is_hurt = true
 			$AnimatedSprite.play("hurt")
 	
-	print("Lives: " + str(lives))
 	emit_signal("update_healthbar", -amount)
 
 func add_life(amount):
@@ -148,7 +167,6 @@ func add_life(amount):
 	
 	lives += amount
 	
-	print("Lives: " + str(lives))
 	emit_signal("update_healthbar", amount)
 
 func knockback(amount):
@@ -218,7 +236,10 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Jump_Trail_Cooldown_timeout():
 	# Jump Trail Effect
-	if $AnimatedSprite.animation == "jump":
+	if ($AnimatedSprite.animation == "jump" or velocity.length() >= 800) and not dead:
 		var j_t = jump_trail.instance()
 		j_t.position = position
 		get_parent().add_child(j_t)
+
+func _on_Force_Stop_Stick_Timer_timeout():
+	force_stop_stick = false

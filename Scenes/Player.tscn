@@ -55,7 +55,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 40 )
+extents = Vector2( 20, 40 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -65,6 +65,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -92,7 +93,17 @@ one_shot = true
 wait_time = 0.05
 autostart = true
 
+[node name="Force Stop Stick Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Wall Detection" type="RayCast2D" parent="."]
+position = Vector2( -30, -10 )
+enabled = true
+cast_to = Vector2( 55, 0 )
+
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Low Gravity Timer" to="." method="_on_Low_Gravity_Timer_timeout"]
 [connection signal="timeout" from="Jump Trail Cooldown" to="." method="_on_Jump_Trail_Cooldown_timeout"]
+[connection signal="timeout" from="Force Stop Stick Timer" to="." method="_on_Force_Stop_Stick_Timer_timeout"]

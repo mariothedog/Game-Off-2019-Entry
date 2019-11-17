@@ -9,6 +9,7 @@ func _ready():
 	
 	$Player.can_low_gravity = true
 	$Player.can_double_jump = true
+	$Player.can_wall_grab = true
 
 func _draw(): # For debugging
 	var mouse_pos = get_global_mouse_position()
