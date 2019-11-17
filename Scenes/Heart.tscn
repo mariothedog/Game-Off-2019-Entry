@@ -1,51 +1,45 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Art/Placeholder/UI/Heart.png" type="Texture" id=1]
+[ext_resource path="res://Art/UI/Heart.png" type="Texture" id=1]
 [ext_resource path="res://Code/Heart.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "damage"
-length = 0.8
-step = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.74902 ), Color( 1, 1, 1, 0.498039 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [sub_resource type="Animation" id=2]
-resource_name = "heal"
-length = 0.6
-step = 0.2
+resource_name = "damage"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( -2, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ 0, 59 ]
 }
 
-[node name="Heart" type="TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+[sub_resource type="Animation" id=1]
+resource_name = "heal"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 59 ]
+}
+
+[node name="Heart" type="Sprite"]
+scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/damage = SubResource( 1 )
-anims/heal = SubResource( 2 )
+anims/damage = SubResource( 2 )
+anims/heal = SubResource( 1 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

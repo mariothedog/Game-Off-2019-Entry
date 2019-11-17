@@ -11,20 +11,19 @@ func _on_Player_update_healthbar(amount):
 	if amount > 0: # Heal
 		for _i in range(amount):
 			$Lives.add_child(heart)
-			heart.get_child(0).play("heal")
+			heart.play("heal")
+			heart = heart.duplicate()
 	else: # Damage
 		for _i in range(abs(amount)):
-			var lives_children = $Lives.get_children()
-			var animations_running = 0
-			for child in lives_children:
-				var plyr = child.get_child(0)
-				if plyr.is_playing():
-					animations_running += 1
+			var not_to_be_freed = []
+			for child in $Lives.get_children():
+				if not child.to_be_freed:
+					not_to_be_freed.append(child)
 			
-			var hrt = lives_children[$Lives.get_child_count()-1-animations_running]
-			var anim_player = hrt.get_child(0)
+			if len(not_to_be_freed) == 0:
+				return
 			
-			if hrt.to_be_freed: # This prevents a weird bug where it tries to queue_free() the same heart twice. It occurs if you spam damage the player a lot
-				$Lives.get_children().back().queue_free()
+			var hrt = not_to_be_freed[len(not_to_be_freed)-1]
 			
-			anim_player.play("damage")
+			hrt.to_be_freed = true
+			hrt.play("damage")

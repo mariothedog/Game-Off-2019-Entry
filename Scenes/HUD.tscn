@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Code/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pickupables/Coins.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scenes/Heart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Code/Lives.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Heart.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -25,28 +26,12 @@ margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 
-[node name="Lives" type="GridContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = 10.0
-margin_right = 250.0
-margin_bottom = -434.0
-rect_scale = Vector2( -1, 1 )
-columns = 3
+[node name="Lives" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
-[node name="Heart" parent="Lives" instance=ExtResource( 4 )]
-margin_right = 63.0
-margin_bottom = 57.0
+[node name="Heart" parent="Lives" instance=ExtResource( 5 )]
 
-[node name="Heart2" parent="Lives" instance=ExtResource( 4 )]
-margin_left = 67.0
-margin_right = 130.0
-margin_bottom = 57.0
+[node name="Heart2" parent="Lives" instance=ExtResource( 5 )]
 
-[node name="Heart3" parent="Lives" instance=ExtResource( 4 )]
-margin_left = 134.0
-margin_right = 197.0
-margin_bottom = 57.0
+[node name="Heart3" parent="Lives" instance=ExtResource( 5 )]
 
