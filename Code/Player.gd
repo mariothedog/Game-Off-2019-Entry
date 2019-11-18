@@ -42,28 +42,29 @@ var map
 
 func update_skill():
 	for skill in global.skills:
-		print(skill)
-		if skill == "grab_wall":
-			can_wall_grab  = true
+		if skill == "wall_grab":
+			can_wall_grab = true
 		elif skill == "double_jump":
 			can_double_jump = true
 		elif skill == "low_gravity":
 			can_low_gravity = true
-		elif skill == "inmunity": #this is opcional, only if it is acepted by everyone.
+		elif skill == "inmunity": # Not official yet
 			pass
-
 
 func _ready():
 	global.player = self
 
 func _physics_process(delta):
+	input()
 	if not global.freezing:
-		input()
 		movement(delta)
 		animate()
 
 func _process(delta):
-	if not global.freezing:
+	if global.freezing:
+		hold_duration = 0
+		$"Jump Bar".value = 0
+	else:
 		if dead:
 			hold_duration = 0
 		else:
@@ -87,21 +88,29 @@ func _process(delta):
 			jump()
 
 func input():
-	if can_low_gravity:
-		if Input.is_action_just_pressed("low_gravity"):
-			low_gravity_enabled = true
-			if $"Low Gravity Timer".is_stopped():
-				$"Low Gravity Timer".start()
-			else:
-				low_gravity_enabled = false
-				$"Low Gravity Timer".stop()
-	if Input.is_action_just_pressed("take_damage"):
-		take_damage(1)
-	if Input.is_action_just_pressed("add_health"):
-		add_life(1)
+	if not global.freezing:
+		if can_low_gravity:
+			if Input.is_action_just_pressed("low_gravity"):
+				low_gravity_enabled = true
+				if $"Low Gravity Timer".is_stopped():
+					$"Low Gravity Timer".start()
+				else:
+					low_gravity_enabled = false
+					$"Low Gravity Timer".stop()
+		if Input.is_action_just_pressed("take_damage"):
+			take_damage(1)
+		if Input.is_action_just_pressed("add_health"):
+			add_life(1)
+	
+	if Input.is_action_just_pressed("shop"):
+		var shop_node = get_parent().get_node("HUD").get_node("shop")
+		if shop_node.visible:
+			shop_node.exit()
+		else:
+			shop_node.visible = true
 
 func _input(event):
-	if event is InputEventMouseButton and not dead:
+	if not global.freezing and event is InputEventMouseButton and not dead:
 		if event.button_index == BUTTON_LEFT:
 			if not event.is_pressed() and can_jump:
 				if can_double_jump:

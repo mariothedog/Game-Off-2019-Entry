@@ -11,16 +11,16 @@ func _ready():
 	$"Dialogue control/TEXT".hide()
 	pass
 
-func _on_Dialogue_node_body_entered(body): # when player touches collision shape, dialogue starts
+func _on_Dialogue_node_body_entered(body): # When player touches collision shape, dialogue starts
 	if body.get_name() == "Player":
 		dialogue_start = true
 
-func _input(event):                        # show
+func _input(_event): # Show
 	if dialogue_start == true:
 		$"Dialogue control/TEXT".show()
 	else:
 		return
 
-func _dialogue():                         # dialogue function
+func _dialogue(): # Dialogue function
 	$"Dialogue control/TEXT".visible_characters = 0
 	$"Dialogue control/TEXT".text = line[dialogue_line]

@@ -1,6 +1,7 @@
 extends Sprite
 
 #warning-ignore:unused_class_variable
+
 var to_be_freed = false
 
 var heart = load("res://Art/UI/Heart.png")

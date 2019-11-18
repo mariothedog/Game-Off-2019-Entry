@@ -28,6 +28,9 @@ margin_left = 80.0
 margin_right = 116.0
 margin_bottom = 76.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "0"
 
 [node name="Lives" type="Node2D" parent="."]
@@ -38,3 +41,4 @@ script = ExtResource( 5 )
 [node name="Heart2" parent="Lives" instance=ExtResource( 6 )]
 
 [node name="Heart3" parent="Lives" instance=ExtResource( 6 )]
+

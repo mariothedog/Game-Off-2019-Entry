@@ -65,6 +65,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -100,6 +101,7 @@ one_shot = true
 position = Vector2( -30, -10 )
 enabled = true
 cast_to = Vector2( 55, 0 )
+
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Low Gravity Timer" to="." method="_on_Low_Gravity_Timer_timeout"]

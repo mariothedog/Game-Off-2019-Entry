@@ -13,9 +13,8 @@ size = 35
 font_data = ExtResource( 3 )
 
 [node name="coin_shop" type="VBoxContainer"]
-margin_top = 176.0
-margin_right = 50.0
-margin_bottom = 260.0
+margin_right = 100.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 50, 50 )
 custom_constants/separation = 10
 alignment = 1
@@ -36,33 +35,43 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "0"
-align = 1
+align = 2
 
 [node name="price_item" type="Label" parent="."]
-margin_top = 162.0
+margin_top = 165.0
 margin_right = 100.0
-margin_bottom = 204.0
+margin_bottom = 207.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "0"
-align = 1
+align = 2
 
 [node name="HSeparator" type="HSeparator" parent="."]
-margin_top = 214.0
+margin_top = 220.0
 margin_right = 100.0
-margin_bottom = 218.0
+margin_bottom = 224.0
 
 [node name="rest" type="Label" parent="."]
-margin_top = 228.0
+margin_top = 234.0
 margin_right = 100.0
-margin_bottom = 270.0
+margin_bottom = 276.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 2
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "0"
-align = 1
-[connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]
+align = 2
+autowrap = true
+

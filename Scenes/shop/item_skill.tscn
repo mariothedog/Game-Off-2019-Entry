@@ -6,11 +6,11 @@
 [ext_resource path="res://Scenes/shop/particles_item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/shop/check.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 25
 font_data = ExtResource( 3 )
 
@@ -31,9 +31,9 @@ skill = "double_jump"
 description = "Doble jump"
 
 [node name="logo" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_right = 150.0
 margin_bottom = 115.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -45,12 +45,16 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 150 )
+mouse_filter = 2
 color = Color( 0.207843, 0.184314, 0.184314, 0.333333 )
 
 [node name="Label" type="Label" parent="logo/ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 align = 1
 valign = 1
 autowrap = true
@@ -62,7 +66,10 @@ margin_right = 150.0
 margin_bottom = 150.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "300"
 align = 1
 
@@ -78,6 +85,7 @@ visible = false
 position = Vector2( 125.264, 21.7124 )
 scale = Vector2( 0.693305, 0.706273 )
 texture = ExtResource( 5 )
+
 [connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_item_skill_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_item_skill_mouse_exited"]

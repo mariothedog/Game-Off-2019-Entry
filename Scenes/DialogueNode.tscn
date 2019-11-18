@@ -3,7 +3,6 @@
 [ext_resource path="res://Code/DialogueNode.gd" type="Script" id=1]
 [ext_resource path="res://Art/Dialogue block/speech block.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 70.6471, 20 )
 
@@ -41,5 +40,6 @@ margin_right = 70.0
 margin_bottom = 21.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hello, wanderer!"
+
 [connection signal="body_entered" from="." to="." method="_on_Dialogue_node_body_entered"]
 [connection signal="timeout" from="Dialogue control/Timer" to="Dialogue control/TEXT" method="_on_Timer_timeout"]
