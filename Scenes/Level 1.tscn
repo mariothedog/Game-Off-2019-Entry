@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Code/Level.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Eye Demon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/DialogueNode.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Audio/Track_1.ogg" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -173,11 +174,78 @@ position = Vector2( 177.09, -102.237 )
 [node name="Coin3" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 568.567, -7.86292 )
 
+[node name="Coin4" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 740.329, -28.0701 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 811.054, -28.0701 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 880, -31.8629 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 938.601, -31.8629 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 1013.37, -37.9251 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 1071.97, -33.8837 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 1057.82, -108.65 )
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 999.223, -102.588 )
+
+[node name="Coin12" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 926.477, -106.63 )
+
+[node name="Coin13" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 852, -102.588 )
+
+[node name="Coin14" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 793.399, -90.464 )
+
+[node name="Coin15" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 730, -99.3033 )
+
+[node name="Coin16" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 778.497, -143.759 )
+
+[node name="Coin17" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 853.264, -155.884 )
+
+[node name="Coin18" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 934.093, -161.946 )
+
+[node name="Coin19" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 984.611, -168.008 )
+
+[node name="Coin20" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 1033.11, -174.07 )
+
+[node name="Coin21" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 1079.59, -168.008 )
+
+[node name="Coin22" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 891.658, -188.215 )
+
+[node name="Coin23" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 934.093, -210 )
+
+[node name="Coin24" parent="Coins" instance=ExtResource( 6 )]
+position = Vector2( 934.093, -210 )
+
 [node name="Eye Demon" parent="." instance=ExtResource( 7 )]
 position = Vector2( -151.4, -49.2592 )
 
 [node name="Dialogue_node" parent="." instance=ExtResource( 8 )]
 position = Vector2( 362, -26.9498 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
 
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]

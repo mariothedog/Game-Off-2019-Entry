@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Code/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Player/idle/adventurer-idle-00.png" type="Texture" id=2]
@@ -15,11 +15,12 @@
 [ext_resource path="res://Art/Placeholder/Player/hurt/adventurer-hurt-00.png" type="Texture" id=13]
 [ext_resource path="res://Art/Placeholder/Player/hurt/adventurer-hurt-01.png" type="Texture" id=14]
 [ext_resource path="res://Art/Placeholder/Player/hurt/adventurer-hurt-02.png" type="Texture" id=15]
-[ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=16]
-[ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-01.png" type="Texture" id=17]
-[ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-00.png" type="Texture" id=18]
-[ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-01.png" type="Texture" id=19]
+[ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-00.png" type="Texture" id=16]
+[ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-01.png" type="Texture" id=17]
+[ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=18]
+[ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-01.png" type="Texture" id=19]
 [ext_resource path="res://Art/Placeholder/UI/Jump Bar.png" type="Texture" id=20]
+[ext_resource path="res://Audio/Jump.wav" type="AudioStream" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -45,12 +46,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "fall",
+"name": "wall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
-"name": "wall",
+"name": "fall",
 "speed": 5.0
 } ]
 
@@ -65,7 +66,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -101,6 +102,10 @@ one_shot = true
 position = Vector2( -30, -10 )
 enabled = true
 cast_to = Vector2( 55, 0 )
+
+[node name="Jump SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
 
 [connection signal="jump" from="." to="." method="_on_Player_jump"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -134,6 +134,7 @@ func jump():
 	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
 		$AnimatedSprite.play("jump")
 		walk_jumping = false
+		$"Jump SFX".play()
 	else:
 		walk_jumping = true
 	is_hurt = false
