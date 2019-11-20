@@ -261,7 +261,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Jump_Trail_Cooldown_timeout():
 	# Jump Trail Effect
-	if ($AnimatedSprite.animation == "jump" or velocity.length() >= 800) and not dead:
+	if not global.freezing and ($AnimatedSprite.animation == "jump" or velocity.length() >= 800) and not dead:
 		var j_t = jump_trail.instance()
 		j_t.position = position
 		get_parent().add_child(j_t)
