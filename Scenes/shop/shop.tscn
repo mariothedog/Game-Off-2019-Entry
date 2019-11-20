@@ -139,8 +139,8 @@ margin_right = 900.0
 margin_bottom = 470.0
 
 [node name="coin_player" parent="main_container/container_secondary/container_info" instance=ExtResource( 7 )]
-margin_top = 95.0
-margin_bottom = 375.0
+margin_top = 100.0
+margin_bottom = 370.0
 
 [node name="container_button" type="HBoxContainer" parent="main_container"]
 margin_top = 480.0

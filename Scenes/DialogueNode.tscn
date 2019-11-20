@@ -8,6 +8,7 @@ extents = Vector2( 70.6471, 20 )
 
 [node name="Dialogue_node" type="Area2D"]
 position = Vector2( 11.3532, -5.47052 )
+z_index = -2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

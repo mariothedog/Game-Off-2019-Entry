@@ -12,7 +12,6 @@ func select_item(item):
 	$price_item.text = "- " + str(item.price)
 	$HSeparator.visible = true
 	$rest.visible = true
-	$price.align = Label.ALIGN_RIGHT
 	if coins - item.price < 0:
 		$rest.text = "Not Enough"
 	else:
@@ -23,7 +22,6 @@ func disable_price_calculator():
 	$rest.visible = false
 	$HSeparator.visible = false
 	$price.text = str(global.coins)
-	$price.align = Label.ALIGN_CENTER
 
 func update_coins():
 	coins = global.coins
