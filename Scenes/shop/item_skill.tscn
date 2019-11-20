@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Code/item_skill.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-00.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scenes/shop/particles_item.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Art/shop/check.png" type="Texture" id=5]
+[ext_resource path="res://Art/shop/check.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -73,19 +72,11 @@ custom_constants/shadow_offset_y = 2
 text = "300"
 align = 1
 
-[node name="particles_items" parent="." instance=ExtResource( 4 )]
-position = Vector2( 120.253, 50.1055 )
-scale = Vector2( 0.72, 0.68 )
-emitting = false
-one_shot = true
-visibility_rect = Rect2( -23.4786, -12.5525, 45.1316, 87.6358 )
-
 [node name="check" type="Sprite" parent="."]
 visible = false
 position = Vector2( 125.264, 21.7124 )
 scale = Vector2( 0.693305, 0.706273 )
-texture = ExtResource( 5 )
-
+texture = ExtResource( 4 )
 [connection signal="gui_input" from="." to="." method="_on_item_skill_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_item_skill_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_item_skill_mouse_exited"]

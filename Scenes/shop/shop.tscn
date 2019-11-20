@@ -164,7 +164,6 @@ margin_bottom = 54.0
 rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
-
 [connection signal="visibility_changed" from="." to="." method="_on_shop_visibility_changed"]
 [connection signal="pressed" from="main_container/container_button/buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="main_container/container_button/exit" to="." method="_on_exit_pressed"]

@@ -32,5 +32,4 @@ func _on_item_skill_mouse_exited():
 func _on_item_skill_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			$particles_items.emitting = true
 			emit_signal("on_click", self)
