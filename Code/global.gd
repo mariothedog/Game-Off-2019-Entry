@@ -16,3 +16,9 @@ var tile_colors = {
 	
 var skills = []
 var freezing = false
+
+func _ready():
+	randomize()
+
+func random_int(mini, maxi):
+	return randi() % maxi + mini

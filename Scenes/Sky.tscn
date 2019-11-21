@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Code/Sky.gd" type="Script" id=1]
+[ext_resource path="res://Art/Sky/Background.png" type="Texture" id=2]
+
+[node name="Sky" type="ParallaxBackground" groups=[
+"Clouds",
+]]
+script = ExtResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = ExtResource( 2 )
+
+[node name="Cloud Spawn Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cloud Spawn Cooldown" to="." method="_on_Cloud_Spawn_Cooldown_timeout"]
