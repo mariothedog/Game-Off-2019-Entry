@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/speech block.png-0c4c58ca74ba4687fbf8fa1352013195.stex"
+path="res://.import/Sign.png-7bc10450d2aeb07c0539a21a68fb69da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Dialogue block/speech block.png"
-dest_files=[ "res://.import/speech block.png-0c4c58ca74ba4687fbf8fa1352013195.stex" ]
+source_file="res://Art/Tiles/Sign.png"
+dest_files=[ "res://.import/Sign.png-7bc10450d2aeb07c0539a21a68fb69da.stex" ]
 
 [params]
 
