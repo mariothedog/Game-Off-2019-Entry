@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Code/Level.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/DialogueNode.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Audio/Track_1.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Tile Sets/SpikeTrap.tres" type="TileSet" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -181,5 +182,10 @@ autoplay = true
 
 [node name="Sky" parent="." instance=ExtResource( 10 )]
 
+[node name="SpikeTrap" type="TileMap" parent="."]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 40, 40 )
+format = 1
+tile_data = PoolIntArray( -2, 0, 0, -1, 0, 0, -65536, 0, 0 )
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]
