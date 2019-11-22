@@ -127,16 +127,16 @@ func jump():
 	force_stop_stick = true
 	$"Force Stop Stick Timer".start()
 	var jump_dir = (get_global_mouse_position() - position).normalized()
-	emit_signal("jump", hold_duration, jump_dir)
-	hold_duration = 0
-	jumps += 1
-	can_jump = false
 	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
 		$AnimatedSprite.play("jump")
 		walk_jumping = false
 		$"Jump SFX".play()
 	else:
 		walk_jumping = true
+	emit_signal("jump", hold_duration, jump_dir)
+	hold_duration = 0
+	jumps += 1
+	can_jump = false
 	is_hurt = false
 
 func movement(delta):
@@ -208,8 +208,7 @@ func pickup_coin():
 	global.coins += 1
 
 func _on_Player_jump(_duration, _jump_dir):
-	var mouse_pos_offsetted = get_global_mouse_position() - position
-	if mouse_pos_offsetted.y > 0 or not is_on_floor():
+	if walk_jumping or not is_on_floor():
 		return
 	
 	if map:
