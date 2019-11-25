@@ -2,6 +2,8 @@ https://bakudas.itch.io/generic-platformer-pack
 https://opengameart.org/content/rotating-coin
 kenney.nl
 https://opengameart.org/content/heart-3
-DaveB - Heart Animations
+DaveB - Heart Shatter Animation
+Iqdev - Heart Appear Animation
 http://pixelartmaker.com/art/281303a9bbc5eb8
 https://opengameart.org/content/sword-dialog-box, Angelee, https://www.deviantart.com/artsyangelee
+https://freesound.org/people/cdrk/sounds/68449/

@@ -6,7 +6,7 @@
 [ext_resource path="res://Fonts/IndieFlower-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 30 )
+extents = Vector2( 50, 30 )
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 4 )
@@ -40,7 +40,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 autowrap = true
-percent_visible = -0.2
 
 [node name="Fade" type="Tween" parent="."]
 

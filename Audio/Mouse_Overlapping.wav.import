@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Mouse_Overlapping.wav-5512b64d48c55874de0b67356bc8bc6c.sample"
+
+[deps]
+
+source_file="res://Audio/Mouse_Overlapping.wav"
+dest_files=[ "res://.import/Mouse_Overlapping.wav-5512b64d48c55874de0b67356bc8bc6c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

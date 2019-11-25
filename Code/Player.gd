@@ -15,6 +15,7 @@ export var AIR_RESISTANCE = 0.01
 export var LOW_GRAVITY = Vector2(0, 400)
 export var lives = 3
 
+var can_charge = true
 var hold_duration = 0
 var velocity = Vector2()
 
@@ -69,7 +70,7 @@ func _process(delta):
 			hold_duration = 0
 		else:
 			if Input.is_action_pressed("jump"):
-				if can_jump:
+				if can_jump and can_charge:
 					if can_double_jump:
 						if (is_on_floor() or jumps < 2):
 							hold_duration += delta
@@ -184,6 +185,7 @@ func take_damage(amount):
 			is_hurt = true
 			$AnimatedSprite.play("hurt")
 	
+	$"Hurt SFX".play()
 	emit_signal("update_healthbar", -amount)
 
 func add_life(amount):

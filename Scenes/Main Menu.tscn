@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Code/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/UI/Main Menu Background.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Audio/Start_Menu_Music.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Mouse_Overlapping.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -74,6 +76,15 @@ enabled_focus_mode = 0
 flat = true
 
 [node name="Transition" type="Tween" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+autoplay = true
+
+[node name="Mouse Button Overlap SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_exited"]

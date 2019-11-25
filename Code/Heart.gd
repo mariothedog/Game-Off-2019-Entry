@@ -17,8 +17,8 @@ func play(anim):
 	if anim == "heal":
 		current_anim = "heal"
 		texture = heart_appear
-		vframes = 8
-		hframes = 8
+		vframes = 1
+		hframes = 13
 		frame = 0
 		$AnimationPlayer.play("heal")
 	else:
@@ -28,6 +28,7 @@ func play(anim):
 		hframes = 8
 		frame = 0
 		z_index = 1
+		$"Shatter SFX".play()
 		$AnimationPlayer.play("damage")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -2,11 +2,16 @@ extends Node2D
 
 func _ready():
 	$Player.map = $TileMap
+	$Player.can_charge = false
 	modulate.a = 0
 	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.2,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Transition.start()
 	global.freezing = false
+	
+	$"Click Hint/Fade".interpolate_property($"Click Hint", "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1,
+	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$"Click Hint/Fade".start()
 
 func _draw(): # For debugging
 	var mouse_pos = get_global_mouse_position()
@@ -20,6 +25,11 @@ func _process(_delta):
 			print_debug("An error occured when trying to reload the current scene at Level.gd.")
 
 func _on_Player_jump(duration, jump_dir):
+	if $"Click Hint".modulate.a > 0:
+		$"Click Hint/Fade".stop_all()
+		$"Click Hint/Fade".interpolate_property($"Click Hint", "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$"Click Hint/Fade".start()
 	var multi = 1 + duration/2
 	multi = min(multi, 1.4)
 	$Player.velocity = jump_dir * $Player.JUMP_SPEED * multi

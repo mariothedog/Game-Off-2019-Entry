@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Heart-sheet.png-5ef570857d01cbb0de23bc404e01b6b2.stex"
+path="res://.import/Click Hint.png-2faf507b31da776ae9718e181e99a88a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/Heart-sheet.png"
-dest_files=[ "res://.import/Heart-sheet.png-5ef570857d01cbb0de23bc404e01b6b2.stex" ]
+source_file="res://Art/UI/Click Hint.png"
+dest_files=[ "res://.import/Click Hint.png-2faf507b31da776ae9718e181e99a88a.stex" ]
 
 [params]
 
