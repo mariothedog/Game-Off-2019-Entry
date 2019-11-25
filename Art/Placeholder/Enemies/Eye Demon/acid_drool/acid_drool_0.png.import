@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle3.png-6b8d7b5b89920540c76649215dbff7d1.stex"
+path="res://.import/acid_drool_0.png-da0c5b295dc62c3f16b0e3770965dfb3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/Enemies/eye demon/idle3.png"
-dest_files=[ "res://.import/idle3.png-6b8d7b5b89920540c76649215dbff7d1.stex" ]
+source_file="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_0.png"
+dest_files=[ "res://.import/acid_drool_0.png-da0c5b295dc62c3f16b0e3770965dfb3.stex" ]
 
 [params]
 

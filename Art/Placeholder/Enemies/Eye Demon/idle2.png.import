@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle2.png-ff7121a992c11181c1bbcd89a611372b.stex"
+path="res://.import/idle2.png-b72f933340aa6bd73a142d77d7fe858c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/Enemies/Eye Demon/idle2.png"
-dest_files=[ "res://.import/idle2.png-ff7121a992c11181c1bbcd89a611372b.stex" ]
+source_file="res://Art/Placeholder/Enemies/eye demon/idle2.png"
+dest_files=[ "res://.import/idle2.png-b72f933340aa6bd73a142d77d7fe858c.stex" ]
 
 [params]
 

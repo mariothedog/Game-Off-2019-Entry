@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle3.png-6b8d7b5b89920540c76649215dbff7d1.stex"
+path="res://.import/azul2.png-c5f0f0c1116e8bd317bb8512356ffa44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/Enemies/eye demon/idle3.png"
-dest_files=[ "res://.import/idle3.png-6b8d7b5b89920540c76649215dbff7d1.stex" ]
+source_file="res://Art/Placeholder/Enemies/blue patrol/azul2.png"
+dest_files=[ "res://.import/azul2.png-c5f0f0c1116e8bd317bb8512356ffa44.stex" ]
 
 [params]
 
