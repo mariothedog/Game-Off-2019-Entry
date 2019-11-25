@@ -74,6 +74,12 @@ shop={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="enviroment"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

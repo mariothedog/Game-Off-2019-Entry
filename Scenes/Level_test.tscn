@@ -11,7 +11,6 @@
 [ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
@@ -154,10 +153,12 @@ position = Vector2( -290.445, -54.6629 )
 [node name="Pit sensor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 80, 330 )
 scale = Vector2( 6.25, 4 )
+collision_mask = 2
 
 [node name="Barriers" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Barriers"]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/StaticBody2D"]
 position = Vector2( -590, -10 )
@@ -169,6 +170,7 @@ shape = SubResource( 9 )
 
 [node name="Coin" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 143.893, -243.13 )
+collision_mask = 4
 
 [node name="Eye Demon" parent="." instance=ExtResource( 7 )]
 position = Vector2( 233.323, -22.5217 )
@@ -183,10 +185,11 @@ autoplay = true
 
 [node name="Sign" parent="Signs" instance=ExtResource( 10 )]
 position = Vector2( -100, -20 )
+collision_mask = 2
 
 [node name="Sign2" parent="Signs" instance=ExtResource( 10 )]
 position = Vector2( -290, -20 )
+collision_mask = 2
 text = "Click to jump"
-
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]
