@@ -132,7 +132,6 @@ func jump():
 	multi = min(multi, 1.4)
 	
 	var jump_dir = (get_global_mouse_position() - position).normalized()
-	print(jump_dir)
 	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
 		$AnimatedSprite.play("jump")
 		walk_jumping = false
