@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/acid_drool_4.png-8f03d41677c967660a279d02b69c83e0.stex"
+path="res://.import/acid_drool_4.png-d4613a8411b5dfbb4724b8231052fc2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_4.png"
-dest_files=[ "res://.import/acid_drool_4.png-8f03d41677c967660a279d02b69c83e0.stex" ]
+source_file="res://Art/Placeholder/Enemies/Eye Demon/acid_drool/acid_drool_4.png"
+dest_files=[ "res://.import/acid_drool_4.png-d4613a8411b5dfbb4724b8231052fc2e.stex" ]
 
 [params]
 

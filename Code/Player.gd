@@ -127,14 +127,25 @@ func jump():
 	stick_to_wall = false
 	force_stop_stick = true
 	$"Force Stop Stick Timer".start()
+	
+	var multi = 1 + hold_duration/2
+	multi = min(multi, 1.4)
+	
 	var jump_dir = (get_global_mouse_position() - position).normalized()
+	print(jump_dir)
 	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
 		$AnimatedSprite.play("jump")
 		walk_jumping = false
 		$"Jump SFX".play()
+	elif jump_dir.y > 0.9:
+		return
 	else:
 		walk_jumping = true
-	emit_signal("jump", hold_duration, jump_dir)
+		multi /= 1.8
+		jump_dir.y -= 0.8
+		$AnimatedSprite.play("jump")
+	
+	emit_signal("jump", multi, jump_dir)
 	hold_duration = 0
 	jumps += 1
 	can_jump = false
@@ -262,7 +273,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Jump_Trail_Cooldown_timeout():
 	# Jump Trail Effect
-	if not global.freezing and ($AnimatedSprite.animation == "jump" or velocity.length() >= 800) and not dead:
+	if not global.freezing and ($AnimatedSprite.animation == "jump" or velocity.length() >= 800) and not walk_jumping and not dead:
 		var j_t = jump_trail.instance()
 		j_t.position = position
 		get_parent().add_child(j_t)

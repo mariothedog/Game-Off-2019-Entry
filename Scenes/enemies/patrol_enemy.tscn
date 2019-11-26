@@ -11,10 +11,10 @@
 [ext_resource path="res://Art/Placeholder/Enemies/red patrol/vermelho2.png" type="Texture" id=9]
 [ext_resource path="res://Art/Placeholder/Enemies/red patrol/vermelho3.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.8492, 14.9079 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -32,7 +32,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16.091, 11.7887 )
 
 [node name="patrol" type="KinematicBody2D"]
@@ -47,14 +47,13 @@ scale = Vector2( 2.64082, 2.64082 )
 [node name="collision_area" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.147647, 2.60835 )
 scale = Vector2( 0.378671, 0.378671 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.649825, -1.94948 )
 scale = Vector2( 2.64082, 2.64082 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "green"
-frame = 2
 playing = true
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite"]
@@ -65,10 +64,11 @@ cast_to = Vector2( 0, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.779785, 2.85923 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -20, -5, 40, 20 )
 process_parent = true
 physics_process_parent = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
