@@ -13,7 +13,6 @@
 [ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Click Hint.tscn" type="PackedScene" id=12]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
@@ -209,6 +208,5 @@ text = "Click where you want to jump to."
 
 [node name="Click Hint" parent="." instance=ExtResource( 12 )]
 position = Vector2( -225, -171 )
-
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]

@@ -31,7 +31,6 @@ ACID_DROOL = ExtResource( 2 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="Position2D" type="Position2D" parent="AnimatedSprite"]
@@ -64,5 +63,8 @@ shape = SubResource( 3 )
 
 [node name="Attack Cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="shot_cooldown" type="Timer" parent="."]
 [connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]
 [connection signal="timeout" from="Attack Cooldown" to="." method="_on_Attack_Cooldown_timeout"]
+[connection signal="timeout" from="shot_cooldown" to="." method="_on_shot_cooldown_timeout"]

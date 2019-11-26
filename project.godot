@@ -84,6 +84,7 @@ shop={
 2d_physics/layer_1="enviroment"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
+2d_physics/layer_4="bullets"
 
 [rendering]
 

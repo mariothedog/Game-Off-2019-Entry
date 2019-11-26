@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Code/enemies/acid_drool.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_0.png" type="Texture" id=2]
@@ -7,9 +7,8 @@
 [ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_4.png" type="Texture" id=5]
 [ext_resource path="res://Art/Placeholder/Enemies/eye demon/particle_acid_drool.png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 10.0506
-height = 0.380289
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.8954
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -30,13 +29,15 @@ orbit_velocity_random = 0.0
 scale = 0.5
 scale_random = 1.0
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 12.3207
+
 [node name="acid_drool" type="KinematicBody2D"]
 collision_layer = 8
-collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.293625, 0.0042572 )
+position = Vector2( 0.412346, 0.241703 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -54,4 +55,12 @@ texture = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 4 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
