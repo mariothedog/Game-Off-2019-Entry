@@ -17,7 +17,7 @@ func damage():
 		global.player.knockback(kb)
 		$"Attack Again".start()
 
-func _on_SpikeTrap_body_exited(body):
+func _on_SpikeTrap_body_exited(_body):
 	$"Attack Again".stop()
 
 func _on_Attack_Again_timeout():
