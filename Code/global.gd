@@ -4,6 +4,7 @@ extends Node
 
 var player
 
+var level = 1
 var coins = 0
 
 var tile_colors = {
@@ -26,3 +27,10 @@ func _ready():
 
 func random_int(mini, maxi):
 	return randi() % maxi + mini
+
+func next_level():
+	level += 1
+	var level_scene = "res://Scenes/Level " + str(level) + ".tscn"
+	global.checkpoint = null
+	if get_tree().change_scene(level_scene) != OK:
+		print_debug("An error occured when trying to switch from the Main Menu scene to the " + level_scene + " scene.")
