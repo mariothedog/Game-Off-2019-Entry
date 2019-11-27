@@ -85,7 +85,6 @@ autoplay = true
 [node name="Mouse Button Overlap SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -20.0
-
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play/Play Button" to="." method="_on_Play_Button_pressed"]
