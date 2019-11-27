@@ -217,5 +217,6 @@ position = Vector2( -225, -171 )
 
 [node name="patrol" parent="." instance=ExtResource( 13 )]
 position = Vector2( 195.804, -0.437347 )
+
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]

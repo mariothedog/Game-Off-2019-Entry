@@ -17,6 +17,10 @@ var tile_colors = {
 var skills = []
 var freezing = false
 
+var checkpoint = null
+
+var can_charge = false
+
 func _ready():
 	randomize()
 

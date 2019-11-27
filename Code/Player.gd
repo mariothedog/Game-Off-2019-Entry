@@ -15,7 +15,6 @@ export var AIR_RESISTANCE = 0.01
 export var LOW_GRAVITY = Vector2(0, 400)
 export var lives = 3
 
-var can_charge = true
 var hold_duration = 0
 var velocity = Vector2()
 
@@ -70,7 +69,7 @@ func _process(delta):
 			hold_duration = 0
 		else:
 			if Input.is_action_pressed("jump"):
-				if can_jump and can_charge:
+				if can_jump and global.can_charge and (get_global_mouse_position() - position).normalized().y <= 0.9:
 					if can_double_jump:
 						if (is_on_floor() or jumps < 2):
 							hold_duration += delta
@@ -137,6 +136,7 @@ func jump():
 		walk_jumping = false
 		$"Jump SFX".play()
 	elif jump_dir.y > 0.9:
+		hold_duration = 0
 		return
 	else:
 		walk_jumping = true

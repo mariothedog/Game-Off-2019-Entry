@@ -54,6 +54,7 @@ position = Vector2( -0.649825, -1.94948 )
 scale = Vector2( 2.64082, 2.64082 )
 frames = SubResource( 2 )
 animation = "green"
+frame = 2
 playing = true
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite"]

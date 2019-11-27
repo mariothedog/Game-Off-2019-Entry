@@ -3,7 +3,7 @@
 [ext_resource path="res://Code/Pit_Sensor.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 194.631, 19.8657 )
+extents = Vector2( 685.471, 19.8657 )
 
 [node name="Pit sensor" type="Area2D"]
 script = ExtResource( 1 )
