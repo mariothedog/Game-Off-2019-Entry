@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Code/shop.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/shop/item_skill.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Placeholder/Player/jump/adventurer-jump-00.png" type="Texture" id=3]
 [ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-00.png" type="Texture" id=4]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-01.png" type="Texture" id=5]
-[ext_resource path="res://Art/Placeholder/Player/hurt/adventurer-hurt-01.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/shop/coin_shop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/shop/coin_shop.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Roboto-Regular.ttf"
@@ -61,9 +60,9 @@ size_flags_vertical = 3
 
 [node name="grind_items" type="GridContainer" parent="main_container/container_secondary/content_grind"]
 margin_left = 170.0
-margin_top = 80.0
+margin_top = 160.0
 margin_right = 620.0
-margin_bottom = 390.0
+margin_bottom = 310.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -80,7 +79,7 @@ anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 150.0
-margin_bottom = 155.0
+margin_bottom = 150.0
 logo = ExtResource( 3 )
 price = 10
 description = "Double jump"
@@ -93,7 +92,7 @@ anchor_bottom = 0.0
 margin_left = 150.0
 margin_top = 0.0
 margin_right = 300.0
-margin_bottom = 155.0
+margin_bottom = 150.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 logo = ExtResource( 4 )
@@ -109,7 +108,7 @@ anchor_bottom = 0.0
 margin_left = 300.0
 margin_top = 0.0
 margin_right = 450.0
-margin_bottom = 155.0
+margin_bottom = 150.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 logo = ExtResource( 5 )
@@ -117,28 +116,12 @@ price = 30
 skill = "low_gravity"
 description = "Low gravity"
 
-[node name="immunity" parent="main_container/container_secondary/content_grind/grind_items" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 165.0
-margin_right = 150.0
-margin_bottom = 320.0
-size_flags_horizontal = 7
-size_flags_vertical = 7
-logo = ExtResource( 6 )
-price = 20
-skill = "immunity"
-description = "Immunity"
-
 [node name="container_info" type="CenterContainer" parent="main_container/container_secondary"]
 margin_left = 800.0
 margin_right = 900.0
 margin_bottom = 470.0
 
-[node name="coin_player" parent="main_container/container_secondary/container_info" instance=ExtResource( 7 )]
+[node name="coin_player" parent="main_container/container_secondary/container_info" instance=ExtResource( 6 )]
 margin_top = 100.0
 margin_bottom = 370.0
 
@@ -164,6 +147,7 @@ margin_bottom = 54.0
 rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
+
 [connection signal="visibility_changed" from="." to="." method="_on_shop_visibility_changed"]
 [connection signal="pressed" from="main_container/container_button/buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="main_container/container_button/exit" to="." method="_on_exit_pressed"]

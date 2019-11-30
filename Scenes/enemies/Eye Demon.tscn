@@ -31,40 +31,25 @@ ACID_DROOL = ExtResource( 2 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="Position2D" type="Position2D" parent="AnimatedSprite"]
 position = Vector2( 0.0708527, -8.85682 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="right" type="RayCast2D" parent="AnimatedSprite"]
-scale = Vector2( 0.4, 0.4 )
-enabled = true
-cast_to = Vector2( 200, 0 )
-collision_mask = 2
-
-[node name="left" type="RayCast2D" parent="AnimatedSprite"]
-scale = Vector2( 0.4, 0.4 )
-enabled = true
-cast_to = Vector2( -200, 0 )
-collision_mask = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 
-[node name="Attack" type="Area2D" parent="."]
-editor/display_folded = true
+[node name="Die" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Die"]
 shape = SubResource( 3 )
 
-[node name="Attack Cooldown" type="Timer" parent="."]
-one_shot = true
-
 [node name="shot_cooldown" type="Timer" parent="."]
-[connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]
-[connection signal="timeout" from="Attack Cooldown" to="." method="_on_Attack_Cooldown_timeout"]
+
+[connection signal="body_entered" from="Die" to="." method="_on_Die_body_entered"]
 [connection signal="timeout" from="shot_cooldown" to="." method="_on_shot_cooldown_timeout"]

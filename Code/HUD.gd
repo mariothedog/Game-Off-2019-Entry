@@ -2,6 +2,10 @@ extends CanvasLayer
 
 var heart = load("res://Scenes/Heart.tscn").instance()
 
+func _ready():
+	$"Coin Amount".text = str(global.coins)
+	$Level.text = "Level " + str(global.level)
+
 func _process(_delta):
 	$"Coin Amount".text = str(global.coins)
 

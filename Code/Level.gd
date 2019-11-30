@@ -6,6 +6,9 @@ func _ready():
 	if global.checkpoint != null:
 		$Player.position = global.checkpoint
 	
+	if global.level > 1:
+		global.can_charge = true
+	
 	$Transition.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.2,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Transition.start()
@@ -17,7 +20,3 @@ func _draw(): # For debugging
 
 func _process(_delta):
 	update()
-	
-	if modulate.a <= 0:
-		if get_tree().reload_current_scene() != OK:
-			print_debug("An error occured when trying to reload the current scene at Level.gd.")
