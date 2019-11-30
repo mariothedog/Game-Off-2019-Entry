@@ -216,8 +216,16 @@ func die():
 	transition.start()
 	dead = true
 	yield(transition, "tween_completed")
-	if get_tree().reload_current_scene() != OK:
-		print_debug("An error occured when trying to reload the current scene at Player.gd in the method \"die\".")
+	if global.checkpoint != null:
+		position = global.checkpoint
+		dead = false
+		add_life(3)
+		transition.interpolate_property(get_parent(), "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 0.35,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		transition.start()
+	else:
+		if get_tree().reload_current_scene() != OK:
+			print_debug("An error occured when trying to reload the current scene at Player.gd in the method \"die\".")
 
 func pickup_coin():
 	global.coins += 1

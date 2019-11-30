@@ -6,7 +6,6 @@ var player
 
 var level = 1
 var coins = 0
-var coins_at_checkpoint = 0
 
 var tile_colors = {
 	"Spawn": Color(0.52, 0.49, 0.53, 1),
