@@ -42,7 +42,8 @@ func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		_velocity.x *= -1
 		scale.x *= -1
-		global.player.take_damage(damage)
-		var dir = (body.position - position).normalized()
-		var kb = KNOCKBACK.rotated(dir.angle())
-		body.knockback(kb)
+		if not global.player.dead:
+			global.player.take_damage(damage)
+			var dir = (body.position - position).normalized()
+			var kb = KNOCKBACK.rotated(dir.angle())
+			body.knockback(kb)
