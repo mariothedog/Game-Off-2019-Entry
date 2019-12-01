@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Code/enemies/acid_drool.gd" type="Script" id=1]
-[ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_0.png" type="Texture" id=2]
-[ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_2.png" type="Texture" id=3]
-[ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_3.png" type="Texture" id=4]
-[ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_4.png" type="Texture" id=5]
-[ext_resource path="res://Art/Placeholder/Enemies/eye demon/particle_acid_drool.png" type="Texture" id=6]
+[ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/acid_drool/acid_drool_0.png" type="Texture" id=2]
+[ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/acid_drool/acid_drool_2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/acid_drool/acid_drool_3.png" type="Texture" id=4]
+[ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/acid_drool/acid_drool_4.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,21 +14,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ParticlesMaterial" id=2]
-emission_shape = 2
-emission_box_extents = Vector3( 30, 30, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 98, 0 )
-angular_velocity = 0.144608
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.5
-scale_random = 1.0
-
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 7.88845
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 12.0
 
 [node name="acid_drool" type="KinematicBody2D"]
@@ -41,26 +29,18 @@ position = Vector2( -0.0505483, 0.23957 )
 scale = Vector2( 0.573999, 0.573999 )
 frames = SubResource( 1 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
-z_index = -2
-emitting = false
-amount = 10
-one_shot = true
-process_material = SubResource( 2 )
-texture = ExtResource( 6 )
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

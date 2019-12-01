@@ -7,7 +7,6 @@ export var knockback = 50
 
 onready var timer = $Timer
 onready var sprite = $Sprite
-onready var particle = $Particles2D
 
 var velocity = Vector2()
 var can_move = true
@@ -31,7 +30,6 @@ func _on_Timer_timeout():
 func _destroy():
 	can_move = false
 	sprite.visible = false
-	particle.emitting  = true
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	if timer.is_stopped():
 		timer.start()

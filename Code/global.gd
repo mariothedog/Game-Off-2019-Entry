@@ -35,7 +35,7 @@ func next_level():
 	var level_scene = "res://Scenes/Level " + str(level) + ".tscn"
 	global.checkpoint = null
 	if get_tree().change_scene(level_scene) != OK:
-		print_debug("An error occured when trying to switch from the Main Menu scene to the " + level_scene + " scene.")
+		print_debug("An error occured when trying to switch to the " + level_scene + " scene.")
 
 func credits():
 	if get_tree().change_scene("res://Scenes/Credits.tscn") != OK:
