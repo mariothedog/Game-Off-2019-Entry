@@ -1,0 +1,246 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Code/Level 2.gd" type="Script" id=1]
+[ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Art/Tiles/Ground Edge End.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Pit_Sensor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/Track_1.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/enemies/Eye Demon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Code/Complete Level.gd" type="Script" id=12]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+
+[sub_resource type="TileSet" id=9]
+0/name = "Ground"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 384, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Grass"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 320, 192, 64 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 64, 64 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "Spawn"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 192, 320, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "Grass Edge"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 448, 320, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "Ground Edge"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 448, 384, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "Ground Edge End.png 5"
+5/texture = ExtResource( 3 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 40, 980 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 40, 204 )
+
+[node name="Level 3" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -2
+tile_set = SubResource( 9 )
+format = 1
+tile_data = PoolIntArray( -524285, 3, 0, -524284, 536870915, 0, -524265, 3, 0, -524264, 536870915, 0, -458749, 5, 0, -458748, 536870917, 0, -458729, 5, 0, -458728, 536870917, 0, -393205, 3, 0, -393204, 536870913, 0, -393203, 536870915, 0, -327669, 4, 0, -327668, 0, 0, -327667, 536870916, 0, -262133, 4, 0, -262132, 0, 0, -262131, 536870916, 0, -196597, 4, 0, -196596, 0, 0, -196595, 536870916, 0, -196587, 3, 0, -196586, 536870913, 0, -196585, 536870915, 0, -131068, 3, 0, -131067, 536870913, 0, -131066, 536870913, 0, -131065, 536870915, 0, -131061, 5, 0, -131060, 0, 0, -131059, 536870917, 0, -131051, 5, 0, -131050, 0, 0, -131049, 536870917, 0, -65532, 4, 0, -65531, 536870912, 0, -65530, 536870912, 0, -65529, 536870916, 0, 65527, 3, 0, 65528, 1, 0, 65529, 1, 0, 65530, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 536870915, 0, 4, 5, 0, 5, 536870912, 0, 6, 536870912, 0, 7, 536870917, 0, 131063, 4, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 536870916, 0, 196599, 4, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 536870916, 0, 262135, 5, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 536870917, 0, 262149, 3, 0, 262150, 536870915, 0, 327685, 5, 0, 327686, 536870917, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( -355, -50 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="Pit sensor" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2820, 490 )
+scale = Vector2( 6.25, 4 )
+
+[node name="Barriers" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/StaticBody2D"]
+position = Vector2( -590, -10 )
+shape = SubResource( 10 )
+
+[node name="Transition" type="Tween" parent="."]
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 360, 230 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 410, 230 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 460, -160 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 800, -410 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 260, -540 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1560, -540 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1410, -210 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+autoplay = true
+
+[node name="Sky" parent="." instance=ExtResource( 9 )]
+
+[node name="Signs" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Eye Demon" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1500, -530 )
+RATIO_SHOT = 0.5
+MAX_DIST = 800.0
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 11 )]
+position = Vector2( -355, 5 )
+
+[node name="Complete Level" type="Area2D" parent="."]
+position = Vector2( 1500.18, -186 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Complete Level"]
+shape = SubResource( 11 )
+
+[connection signal="jump" from="Player" to="." method="_on_Player_jump"]
+[connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]
+[connection signal="body_entered" from="Complete Level" to="Complete Level" method="_on_Complete_Level_body_entered"]

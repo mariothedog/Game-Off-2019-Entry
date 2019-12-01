@@ -23,7 +23,7 @@ func select_item(item):
 		coin_player.select_item(item_selected)
 
 func _on_buy_pressed():
-	if item_selected != null and global.coins - item_selected.price > 0:
+	if item_selected != null and global.coins - item_selected.price >= 0:
 		if not (item_selected.skill in global.skills):
 			global.skills.append(item_selected.skill)
 			global.coins -= item_selected.price

@@ -22,7 +22,6 @@ var hover_shop
 
 # Low Gravity Skill
 var can_low_gravity = false
-var low_gravity_enabled = false
 
 # Double Jump Skill
 var can_double_jump = false
@@ -50,11 +49,10 @@ func update_skill():
 			can_double_jump = true
 		elif skill == "low_gravity":
 			can_low_gravity = true
-		elif skill == "inmunity": # Not official yet
-			pass
 
 func _ready():
 	global.player = self
+	update_skill()
 
 func _physics_process(delta):
 	input()
@@ -92,14 +90,6 @@ func _process(delta):
 
 func input():
 	if not global.freezing:
-		if can_low_gravity:
-			if Input.is_action_just_pressed("low_gravity"):
-				low_gravity_enabled = true
-				if $"Low Gravity Timer".is_stopped():
-					$"Low Gravity Timer".start()
-				else:
-					low_gravity_enabled = false
-					$"Low Gravity Timer".stop()
 		if Input.is_action_just_pressed("take_damage"):
 			take_damage(1)
 		if Input.is_action_just_pressed("add_health"):
@@ -154,7 +144,7 @@ func jump():
 	is_hurt = false
 
 func movement(delta):
-	if low_gravity_enabled:
+	if can_low_gravity:
 		velocity += LOW_GRAVITY * delta
 	else:
 		velocity += GRAVITY * delta
@@ -270,9 +260,6 @@ func _on_Player_jump(_duration, _jump_dir):
 			d_p.process_material.gravity.y = -20
 		d_p.emitting = true
 		get_parent().add_child(d_p)
-
-func _on_Low_Gravity_Timer_timeout():
-	low_gravity_enabled = false
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "jump": # So the jump animation doesn't loop

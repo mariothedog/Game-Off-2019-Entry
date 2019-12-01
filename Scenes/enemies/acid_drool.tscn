@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Code/enemies/acid_drool.gd" type="Script" id=1]
 [ext_resource path="res://Art/Placeholder/Enemies/eye demon/acid_drool/acid_drool_0.png" type="Texture" id=2]
@@ -26,11 +26,14 @@ orbit_velocity_random = 0.0
 scale = 0.5
 scale_random = 1.0
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 7.88845
+
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.0
 
 [node name="acid_drool" type="KinematicBody2D"]
-collision_layer = 8
+collision_layer = 16
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -48,6 +51,9 @@ texture = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
