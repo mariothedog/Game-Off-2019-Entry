@@ -13,12 +13,13 @@ var velocity = Vector2()
 var can_move = true
  
 func _process(delta):
-	var collision = move_and_collide(Vector2(speed, gravity) * delta)
-	if can_move:
-		velocity += Vector2(speed, gravity) * delta
-		velocity = move_and_slide(velocity, Vector2(0, -1))
-	if collision:
-		_destroy()
+	if not global.freezing:
+		var collision = move_and_collide(Vector2(speed, gravity) * delta)
+		if can_move:
+			velocity += Vector2(speed, gravity) * delta
+			velocity = move_and_slide(velocity, Vector2(0, -1))
+		if collision:
+			_destroy()
 
 func shot(dir):
 	velocity.y -= impulse
