@@ -14,7 +14,6 @@ var _gravity = 300
 var _speed_moment = speed
 var _velocity = Vector2()
 
-
 func _ready():
 	set_physics_process(false)
 	if type == TYPE_PATROL.BLUE:
@@ -31,12 +30,13 @@ func _ready():
 	_velocity.x += _speed_moment
 
 func _physics_process(delta):
-	if (is_on_wall() or not cliff_detected.is_colliding()):
-		_velocity.x *= -1
-		scale.x *= -1
-	
-	_velocity.y += _gravity * delta
-	_velocity.y = move_and_slide(_velocity, Vector2.UP).y
+	if not global.freezing:
+		if (is_on_wall() or not cliff_detected.is_colliding()):
+			_velocity.x *= -1
+			scale.x *= -1
+		
+		_velocity.y += _gravity * delta
+		_velocity.y = move_and_slide(_velocity, Vector2.UP).y
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

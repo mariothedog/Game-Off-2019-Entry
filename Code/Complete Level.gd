@@ -7,4 +7,12 @@ func _on_Complete_Level_body_entered(body):
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		transition.start()
 		yield(transition, "tween_completed")
-		global.next_level()
+		if global.level == 5:
+			global.credits()
+			global.level = 0
+			global.coins = 0
+			global.skills = []
+			global.can_charge = false
+			global.checkpoint = null
+		else:
+			global.next_level()

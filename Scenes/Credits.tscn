@@ -285,9 +285,9 @@ autoplay = true
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Exit_Button" type="Button" parent="."]
-margin_left = 285.0
+margin_left = 310.0
 margin_top = -214.0
-margin_right = 469.0
+margin_right = 494.0
 margin_bottom = -128.0
 custom_fonts/font = SubResource( 3 )
 flat = true
@@ -296,6 +296,7 @@ flat = true
 position = Vector2( 94.736, 36.5803 )
 scale = Vector2( 0.578661, 0.871394 )
 texture = ExtResource( 5 )
+
 [connection signal="pressed" from="Label/aZamBie" to="." method="_on_aZamBie_pressed"]
 [connection signal="pressed" from="Label/Mario" to="." method="_on_Mario_pressed"]
 [connection signal="pressed" from="Label/vallemrv" to="." method="_on_vallemrv_pressed"]

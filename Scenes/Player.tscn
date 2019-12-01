@@ -61,6 +61,7 @@ animations = [ {
 extents = Vector2( 13, 35 )
 
 [node name="Player" type="KinematicBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 9
 script = ExtResource( 1 )
@@ -70,7 +71,7 @@ scale = Vector2( 3, 3 )
 z_index = -1
 frames = SubResource( 1 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

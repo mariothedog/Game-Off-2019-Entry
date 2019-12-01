@@ -70,7 +70,8 @@ func _process(delta):
 		else:
 			if Input.is_action_pressed("jump"):
 				if not hover_shop:
-					if can_jump and global.can_charge and (get_global_mouse_position() - position).normalized().y <= 0.9:
+					var not_below = (get_global_mouse_position() - position).normalized().y <= 0.9
+					if can_jump and global.can_charge and (not_below or jumps > 0):
 						if can_double_jump:
 							if (is_on_floor() or jumps < 2):
 								hold_duration += delta
@@ -124,18 +125,23 @@ func jump():
 	multi = min(multi, 1.4)
 	
 	var jump_dir = (get_global_mouse_position() - position).normalized()
-	if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
+	if jumps > 0:
 		$AnimatedSprite.play("jump")
 		walk_jumping = false
 		$"Jump SFX".play()
-	elif jump_dir.y > 0.9:
-		hold_duration = 0
-		return
 	else:
-		walk_jumping = true
-		multi /= 1.8
-		jump_dir.y -= 0.8
-		$AnimatedSprite.play("jump")
+		if jump_dir.y < -0.2: # So the jump animation doesn't play if the player is "walk-jumping"
+			$AnimatedSprite.play("jump")
+			walk_jumping = false
+			$"Jump SFX".play()
+		elif jump_dir.y > 0.9:
+			hold_duration = 0
+			return
+		else:
+			walk_jumping = true
+			multi /= 1.8
+			jump_dir.y -= 0.8
+			$AnimatedSprite.play("jump")
 	
 	emit_signal("jump", multi, jump_dir)
 	hold_duration = 0
@@ -189,6 +195,8 @@ func take_damage(amount):
 			$AnimatedSprite.play("hurt")
 	
 	$"Hurt SFX".play()
+	lives = max(0, lives)
+	hold_duration = 0
 	emit_signal("update_healthbar", -amount)
 
 func add_life(amount):

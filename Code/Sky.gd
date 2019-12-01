@@ -22,7 +22,7 @@ func _on_Cloud_Spawn_Cooldown_timeout():
 			return
 	var cloud_instance = cloud.instance()
 	cloud_instance.position.y = -global.random_int(20, int(get_viewport().size.y)+700)
-	if global.player == null:
+	if global.level == 0:
 		cloud_instance.position.x = -get_viewport().size.x/2
 	else:
 		cloud_instance.position.x = global.player.position.x - global.player.get_global_transform_with_canvas().origin.x - 30

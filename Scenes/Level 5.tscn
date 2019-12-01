@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Code/Level 2.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
@@ -11,7 +11,10 @@
 [ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/enemies/patrol_enemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/enemies/Eye Demon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/SpikeTrap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Code/Complete Level.gd" type="Script" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -156,6 +159,9 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 40, 980 )
 
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 40, 170 )
+
 [node name="Level 3" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
@@ -164,7 +170,7 @@ script = ExtResource( 1 )
 z_index = -2
 tile_set = SubResource( 9 )
 format = 1
-tile_data = PoolIntArray( -262132, 3, 0, -262131, 536870915, 0, -196596, 5, 0, -196595, 536870917, 0, -65534, 3, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 536870915, 0, 65527, 3, 0, 65528, 1, 0, 65529, 1, 0, 65530, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 536870915, 0, 2, 5, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 536870917, 0, 131063, 4, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 536870916, 0, 196599, 4, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 536870916, 0, 262135, 5, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 536870917, 0 )
+tile_data = PoolIntArray( -458737, 3, 0, -458736, 536870915, 0, -393201, 5, 0, -393200, 536870917, 0, -262132, 3, 0, -262131, 536870915, 0, -196596, 5, 0, -196595, 536870917, 0, -196588, 3, 0, -196587, 1, 0, -196586, 536870915, 0, -196583, 3, 0, -196582, 1, 0, -196581, 536870915, 0, -131052, 5, 0, -131051, 0, 0, -131050, 536870917, 0, -131047, 5, 0, -131046, 0, 0, -131045, 536870917, 0, -65534, 3, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 536870915, 0, 65527, 3, 0, 65528, 1, 0, 65529, 1, 0, 65530, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 536870915, 0, 2, 5, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 536870917, 0, 20, 3, 0, 21, 536870915, 0, 26, 3, 0, 27, 536870915, 0, 131063, 4, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 536870916, 0, 65556, 5, 0, 65557, 536870917, 0, 65562, 5, 0, 65563, 536870917, 0, 196599, 4, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 536870916, 0, 131094, 3, 0, 131095, 536870913, 0, 131096, 536870913, 0, 131097, 536870915, 0, 262135, 5, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 536870917, 0, 196630, 4, 0, 196631, 0, 0, 196632, 0, 0, 196633, 536870916, 0, 262166, 5, 0, 262167, 0, 0, 262168, 0, 0, 262169, 536870917, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -355, -50 )
@@ -189,6 +195,24 @@ shape = SubResource( 10 )
 
 [node name="Coin" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 440, -240 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 930, -255 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1310, -460 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1670, -271.949 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1540, -100 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1540, -41.6585 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1540, 16 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
@@ -215,12 +239,42 @@ speed = 80
 damage = 2
 KNOCKBACK = Vector2( 600, 0 )
 
+[node name="patrol3" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1320, -201.964 )
+type = 1
+speed = 150
+KNOCKBACK = Vector2( 200, 0 )
+
+[node name="patrol4" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1692.5, -203.913 )
+type = 1
+speed = 200
+KNOCKBACK = Vector2( 700, 0 )
+
+[node name="Eye Demon" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 990, -461.142 )
+RATIO_SHOT = 2.0
+MAX_DIST = 300.0
+
 [node name="Traps" type="Node2D" parent="."]
+
+[node name="SpikeTrap" parent="Traps" instance=ExtResource( 13 )]
+position = Vector2( 1260, -120 )
+rotation = -1.5708
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 12 )]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 14 )]
 position = Vector2( -355, 5 )
+
+[node name="Complete Level" type="Area2D" parent="."]
+position = Vector2( 1540, 140 )
+script = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Complete Level"]
+rotation = 1.5708
+shape = SubResource( 11 )
 
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]
+[connection signal="body_entered" from="Complete Level" to="Complete Level" method="_on_Complete_Level_body_entered"]

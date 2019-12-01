@@ -10,7 +10,7 @@ func _on_Mario_pressed():
 	var _u = OS.shell_open("https://mariothedog.itch.io")
 
 func _on_vallemrv_pressed():
-	pass
+	var _u = OS.shell_open("https://vallemrv.itch.io/")
 
 func _on_aZamBie_pressed():
 	var _u = OS.shell_open("https://sketchyzambie.itch.io")
@@ -34,10 +34,10 @@ func _on_shinzohotoroki_pressed():
 	var _u = OS.shell_open("https://opengameart.org/content/heart-3")
 
 func _on_DaveB_pressed():
-	pass
+	var _u = OS.shell_open("https://minibobbo.itch.io")
 
 func _on_Iqdev_pressed():
-	pass
+	var _u = OS.shell_open("https://lqdev.itch.io")
 
 func _on_Angelee_pressed():
 	var _u = OS.shell_open("https://www.deviantart.com/artsyangelee")

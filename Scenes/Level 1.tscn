@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Code/Level 1.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
@@ -11,9 +11,8 @@
 [ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Click Hint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/enemies/Eye Demon.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Code/Checkpoint.gd" type="Script" id=13]
-[ext_resource path="res://Scenes/Complete Level.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Code/Checkpoint.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Complete Level.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -230,28 +229,23 @@ position = Vector2( -225, -171 )
 position = Vector2( 1180, 76 )
 shape = SubResource( 11 )
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Eye Demon" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( -490, -71 )
-
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="Checkpoint" type="Area2D" parent="Checkpoints"]
 position = Vector2( 1330, 135 )
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint"]
 shape = SubResource( 12 )
 
 [node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
 position = Vector2( -291.192, 0 )
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
 shape = SubResource( 12 )
 
-[node name="Complete Level" parent="." instance=ExtResource( 14 )]
+[node name="Complete Level" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2090, 120 )
 
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]

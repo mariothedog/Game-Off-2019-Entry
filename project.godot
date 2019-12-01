@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="Leap and Sweep"
 run/main_scene="res://Scenes/Main Menu.tscn"
+boot_splash/image="res://splash.png"
+boot_splash/bg_color=Color( 0.466667, 0.756863, 0.843137, 1 )
 config/icon="res://icon.png"
 
 [autoload]

@@ -248,8 +248,6 @@ position = Vector2( 930, -210 )
 RATIO_SHOT = 1.5
 MAX_DIST = 300.0
 
-[node name="Traps" type="Node2D" parent="."]
-
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 12 )]
