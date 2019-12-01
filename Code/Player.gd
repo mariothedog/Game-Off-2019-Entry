@@ -232,6 +232,7 @@ func die():
 
 func pickup_coin():
 	global.coins += 1
+	$"Coin SFX".play()
 
 func _on_Player_jump(_duration, _jump_dir):
 	if walk_jumping or not is_on_floor():

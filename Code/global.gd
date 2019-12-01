@@ -4,8 +4,8 @@ extends Node
 
 var player
 
-var level = 2
-var coins = 7
+var level = 0
+var coins = 0
 
 var tile_colors = {
 	"Spawn": Color(0.52, 0.49, 0.53, 1),
