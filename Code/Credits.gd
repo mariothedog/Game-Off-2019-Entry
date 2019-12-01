@@ -48,10 +48,17 @@ func _on_bevouliin_pressed():
 func _on_cdrk_pressed():
 	var _u = OS.shell_open("https://freesound.org/people/cdrk/sounds/68449")
 
-func _on_Button_pressed():
+func _on_Exit_Button_pressed():
 	$Tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.1,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	if get_tree().change_scene("res://Scenes/Main Menu.tscn") != OK:
 		print_debug("An error occured when trying to switch from the Credits scene to the Main Menu scene.")
+
+
+func _on_Exit_Button_mouse_entered():
+	$"Exit_Button/Button Sprite".modulate = Color(0.7, 0.7, 0.7, 1)
+
+func _on_Exit_Button_mouse_exited():
+	$"Exit_Button/Button Sprite".modulate = Color(1, 1, 1, 1)

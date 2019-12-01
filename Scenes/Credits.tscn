@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Code/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Audio/Start_Menu_Music.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Art/UI/Exit.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -283,14 +284,18 @@ autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Button" type="Button" parent="."]
-margin_left = 300.0
-margin_top = -210.0
-margin_right = 417.0
+[node name="Exit_Button" type="Button" parent="."]
+margin_left = 285.0
+margin_top = -214.0
+margin_right = 469.0
 margin_bottom = -128.0
 custom_fonts/font = SubResource( 3 )
-text = "Exit"
+flat = true
 
+[node name="Button Sprite" type="Sprite" parent="Exit_Button"]
+position = Vector2( 94.736, 36.5803 )
+scale = Vector2( 0.578661, 0.871394 )
+texture = ExtResource( 5 )
 [connection signal="pressed" from="Label/aZamBie" to="." method="_on_aZamBie_pressed"]
 [connection signal="pressed" from="Label/Mario" to="." method="_on_Mario_pressed"]
 [connection signal="pressed" from="Label/vallemrv" to="." method="_on_vallemrv_pressed"]
@@ -306,4 +311,6 @@ text = "Exit"
 [connection signal="pressed" from="Label/bevouliin" to="." method="_on_bevouliin_pressed"]
 [connection signal="pressed" from="Label/gerobakberkah" to="." method="_on_gerobakberkah_pressed"]
 [connection signal="pressed" from="Label/cdrk" to="." method="_on_cdrk_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Exit_Button" to="." method="_on_Exit_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Exit_Button" to="." method="_on_Exit_Button_mouse_exited"]
+[connection signal="pressed" from="Exit_Button" to="." method="_on_Exit_Button_pressed"]
