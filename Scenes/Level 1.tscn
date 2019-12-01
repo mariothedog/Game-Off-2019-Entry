@@ -162,7 +162,7 @@ extents = Vector2( 40, 330 )
 extents = Vector2( 40, 1200 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 44, 60.8371 )
+extents = Vector2( 44, 90 )
 
 [node name="Level 1" type="Node2D"]
 z_index = 1
@@ -244,6 +244,13 @@ script = ExtResource( 13 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint"]
 shape = SubResource( 12 )
 
+[node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
+position = Vector2( -291.192, 0 )
+script = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
+shape = SubResource( 12 )
+
 [node name="Complete Level" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2090, 120 )
 
@@ -251,3 +258,4 @@ position = Vector2( 2090, 120 )
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]
 [connection signal="body_entered" from="Unlock Jump Charging" to="." method="_on_Unlock_Jump_Charging_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint" to="Checkpoints/Checkpoint" method="_on_Checkpoint_body_entered"]
+[connection signal="body_entered" from="Checkpoints/Checkpoint2" to="Checkpoints/Checkpoint2" method="_on_Checkpoint_body_entered"]

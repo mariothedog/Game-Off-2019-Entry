@@ -195,6 +195,12 @@ position = Vector2( 140, -110 )
 [node name="Coin2" parent="Coins" instance=ExtResource( 7 )]
 position = Vector2( 790, -121.196 )
 
+[node name="Coin3" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1120.18, -260 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1490, -250 )
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -5.0
@@ -266,6 +272,9 @@ position = Vector2( 610, -80 )
 
 [node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 13 )]
 position = Vector2( 140, -64.25 )
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 13 )]
+position = Vector2( -355, 5 )
 
 [node name="Complete Level" parent="." instance=ExtResource( 14 )]
 position = Vector2( 1560, -190 )
