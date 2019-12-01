@@ -16,7 +16,7 @@ func _on_aZamBie_pressed():
 	var _u = OS.shell_open("https://sketchyzambie.itch.io")
 
 func _on_gerobakberkah_pressed():
-	pass
+	var _u = OS.shell_open("https://soundcloud.com/akbar-basit")
 
 func _on_bakudas_pressed():
 	var _u = OS.shell_open("https://bakudas.itch.io/generic-platformer-pack")
