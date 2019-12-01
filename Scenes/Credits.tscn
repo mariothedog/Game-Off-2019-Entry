@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Black Screen" type="ColorRect"]
+margin_left = -28.5679
+margin_top = -17.2434
+margin_right = 1110.43
+margin_bottom = 641.757
+color = Color( 0, 0, 0, 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
