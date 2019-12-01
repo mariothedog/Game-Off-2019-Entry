@@ -15,8 +15,9 @@ func _ready():
 	global.freezing = false
 
 func _draw(): # For debugging
-	var mouse_pos = get_global_mouse_position()
-	draw_line($Player.position, mouse_pos, Color.red, 2)
+	if not global.freezing:
+		var mouse_pos = get_global_mouse_position()
+		draw_line($Player.position, mouse_pos, Color.red, 2)
 
 func _process(_delta):
 	update()

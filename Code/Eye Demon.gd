@@ -24,6 +24,7 @@ func _physics_process(delta):
 		var acid = ACID_DROOL.instance()
 		acid.global_position = positon_shot.global_position
 		acid.shot(-1 if dist.x < 0 else 1)
+		$"Acid Throw SFX".play()
 		root.add_child(acid)
 		shot_cooldown.start()
 

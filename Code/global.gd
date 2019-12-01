@@ -4,7 +4,7 @@ extends Node
 
 var player
 
-var level = 1
+var level = 2
 var coins = 0
 
 var tile_colors = {

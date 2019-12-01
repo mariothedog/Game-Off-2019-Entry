@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Code/Eye Demon.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/enemies/acid_drool.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/idle2.png" type="Texture" id=4]
 [ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/idle3.png" type="Texture" id=5]
 [ext_resource path="res://Art/Placeholder/Enemies/Eye Demon/idle4.png" type="Texture" id=6]
+[ext_resource path="res://Audio/throw_acid.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -31,7 +32,7 @@ ACID_DROOL = ExtResource( 2 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Position2D" type="Position2D" parent="AnimatedSprite"]
@@ -50,6 +51,11 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="shot_cooldown" type="Timer" parent="."]
+
+[node name="Acid Throw SFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0.177132, -22.142 )
+stream = ExtResource( 7 )
+volume_db = -10.0
 
 [connection signal="body_entered" from="Die" to="." method="_on_Die_body_entered"]
 [connection signal="timeout" from="shot_cooldown" to="." method="_on_shot_cooldown_timeout"]

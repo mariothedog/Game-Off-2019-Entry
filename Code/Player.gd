@@ -18,6 +18,8 @@ export var lives = 3
 var hold_duration = 0
 var velocity = Vector2()
 
+var hover_shop
+
 # Low Gravity Skill
 var can_low_gravity = false
 var low_gravity_enabled = false
@@ -69,19 +71,20 @@ func _process(delta):
 			hold_duration = 0
 		else:
 			if Input.is_action_pressed("jump"):
-				if can_jump and global.can_charge and (get_global_mouse_position() - position).normalized().y <= 0.9:
-					if can_double_jump:
-						if (is_on_floor() or jumps < 2):
-							hold_duration += delta
+				if not hover_shop:
+					if can_jump and global.can_charge and (get_global_mouse_position() - position).normalized().y <= 0.9:
+						if can_double_jump:
+							if (is_on_floor() or jumps < 2):
+								hold_duration += delta
+						else:
+							if is_on_floor() or stick_to_wall:
+								hold_duration += delta
+					if can_wall_grab and $"Wall Detection".is_colliding() and not force_stop_stick:
+						jumps = 0
+						can_jump = true
+						stick_to_wall = true
 					else:
-						if is_on_floor() or stick_to_wall:
-							hold_duration += delta
-				if can_wall_grab and $"Wall Detection".is_colliding() and not force_stop_stick:
-					jumps = 0
-					can_jump = true
-					stick_to_wall = true
-				else:
-					stick_to_wall = false
+						stick_to_wall = false
 		
 		$"Jump Bar".value = hold_duration/0.8*100
 		if $"Jump Bar".value >= 100:
@@ -111,7 +114,7 @@ func input():
 
 func _input(event):
 	if not global.freezing and event is InputEventMouseButton and not dead:
-		if event.button_index == BUTTON_LEFT:
+		if event.button_index == BUTTON_LEFT and not hover_shop:
 			if not event.is_pressed() and can_jump:
 				if can_double_jump:
 					if (is_on_floor() or jumps < 2):
