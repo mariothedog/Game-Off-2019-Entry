@@ -81,7 +81,7 @@ margin_top = 0.0
 margin_right = 150.0
 margin_bottom = 150.0
 logo = ExtResource( 3 )
-price = 10
+price = 5
 description = "Double jump"
 
 [node name="wall_grab" parent="main_container/container_secondary/content_grind/grind_items" instance=ExtResource( 2 )]
@@ -96,7 +96,7 @@ margin_bottom = 150.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 logo = ExtResource( 4 )
-price = 20
+price = 10
 skill = "wall_grab"
 description = "Wall Grab"
 
@@ -112,7 +112,7 @@ margin_bottom = 150.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 logo = ExtResource( 5 )
-price = 30
+price = 15
 skill = "low_gravity"
 description = "Low gravity"
 
