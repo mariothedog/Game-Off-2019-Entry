@@ -34,3 +34,6 @@ func next_level():
 	global.checkpoint = null
 	if get_tree().change_scene(level_scene) != OK:
 		print_debug("An error occured when trying to switch from the Main Menu scene to the " + level_scene + " scene.")
+
+func credits():
+	get_tree().change_scene("res://Scenes/Credits.tscn")

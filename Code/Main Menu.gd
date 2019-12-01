@@ -12,8 +12,7 @@ func _on_Credits_Button_pressed():
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Transition.start()
 	yield($Transition, "tween_completed")
-	if get_tree().change_scene("res://Scenes/Credits.tscn") != OK:
-		print_debug("An error occured when trying to switch from the Main Menu scene to the Credits scene.")
+	global.credits()
 
 # PLAY BUTTON
 func _on_Play_Button_mouse_entered():

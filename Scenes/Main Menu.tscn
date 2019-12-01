@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Code/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sky/Background.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Roboto-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Art/UI/Play-button.png" type="Texture" id=4]
 [ext_resource path="res://Art/UI/Credits-Button.png" type="Texture" id=5]
-[ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=6]
-[ext_resource path="res://Art/Tiles/Ground Edge End.png" type="Texture" id=7]
-[ext_resource path="res://Audio/Start_Menu_Music.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Audio/Mouse_Overlapping.wav" type="AudioStream" id=9]
+[ext_resource path="res://Art/UI/Title.png" type="Texture" id=6]
+[ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=7]
+[ext_resource path="res://Art/Tiles/Ground Edge End.png" type="Texture" id=8]
+[ext_resource path="res://Audio/Start_Menu_Music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/Mouse_Overlapping.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -16,7 +17,7 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="TileSet" id=2]
 0/name = "Tile Sheet.png 0"
-0/texture = ExtResource( 6 )
+0/texture = ExtResource( 7 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 320, 192, 128 )
@@ -32,7 +33,7 @@ font_data = ExtResource( 3 )
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Tile Sheet.png 1"
-1/texture = ExtResource( 6 )
+1/texture = ExtResource( 7 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 448, 320, 64, 128 )
@@ -48,7 +49,7 @@ font_data = ExtResource( 3 )
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Ground Edge End.png 2"
-2/texture = ExtResource( 7 )
+2/texture = ExtResource( 8 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 64, 64 )
@@ -84,6 +85,7 @@ margin_bottom = 400.0
 custom_constants/separation = 140
 
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
 margin_right = 784.0
 margin_bottom = 118.0
 custom_fonts/font = SubResource( 1 )
@@ -122,6 +124,11 @@ focus_mode = 0
 enabled_focus_mode = 0
 flat = true
 
+[node name="Sprite" type="Sprite" parent="MarginContainer/VBoxContainer"]
+position = Vector2( 397.895, 74.2107 )
+scale = Vector2( 1.26316, 0.997807 )
+texture = ExtResource( 6 )
+
 [node name="TileMap" type="TileMap" parent="MarginContainer"]
 position = Vector2( -120, -100 )
 tile_set = SubResource( 2 )
@@ -131,14 +138,13 @@ tile_data = PoolIntArray( 327666, 0, 0, 327667, 0, 0, 327668, 0, 0, 327669, 0, 0
 [node name="Transition" type="Tween" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = -15.0
 autoplay = true
 
 [node name="Mouse Button Overlap SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play_Button/Play Button" to="." method="_on_Play_Button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/Play_Button/Play Button" to="." method="_on_Play_Button_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play_Button/Play Button" to="." method="_on_Play_Button_pressed"]
