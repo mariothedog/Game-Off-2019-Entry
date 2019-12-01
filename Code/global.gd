@@ -38,3 +38,7 @@ func next_level():
 func credits():
 	if get_tree().change_scene("res://Scenes/Credits.tscn") != OK:
 		print_debug("An error occured when trying to switch from the Main Menu scene to the Credits scene.")
+
+func MainMenu():
+	if get_tree().change_scene("res://Scenes/Main Menu.tscn") != OK:
+		print_debug("An error occured when trying to switch from the Main Menu scene to the Credits scene.")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Code/shop.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/shop/item_skill.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/Placeholder/Player/wall/adventurer-wall-slide-00.png" type="Texture" id=4]
 [ext_resource path="res://Art/Placeholder/Player/fall/adventurer-fall-01.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/shop/coin_shop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Buttons/Exit-Button.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Roboto-Regular.ttf"
@@ -148,6 +149,9 @@ rect_min_size = Vector2( 100, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
 
+[node name="Exit-Button" parent="main_container/container_button" instance=ExtResource( 7 )]
+position = Vector2( 872.263, 23.7736 )
+scale = Vector2( 0.45846, 0.6 )
 [connection signal="visibility_changed" from="." to="." method="_on_shop_visibility_changed"]
 [connection signal="pressed" from="main_container/container_button/buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="main_container/container_button/exit" to="." method="_on_exit_pressed"]
