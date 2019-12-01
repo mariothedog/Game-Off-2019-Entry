@@ -22,6 +22,8 @@ var checkpoint = null
 
 var can_charge = false
 
+var debug = false
+
 func _ready():
 	randomize()
 

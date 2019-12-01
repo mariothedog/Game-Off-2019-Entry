@@ -91,12 +91,14 @@ func _process(delta):
 
 func input():
 	if not global.freezing:
-		if Input.is_action_just_pressed("take_damage"):
+		if Input.is_action_just_pressed("take_damage") and global.debug:
 			take_damage(1)
-		if Input.is_action_just_pressed("add_health"):
+		if Input.is_action_just_pressed("add_health") and global.debug:
 			add_life(1)
+		if Input.is_action_just_pressed("debug"):
+			global.debug = not global.debug
 	
-	if Input.is_action_just_pressed("shop"):
+	if Input.is_action_just_pressed("shop") and (global.level >= 3 or global.debug):
 		var shop_node = get_parent().get_node("HUD").get_node("shop")
 		if shop_node.visible:
 			shop_node.exit()

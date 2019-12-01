@@ -11,6 +11,7 @@ func _ready():
 
 func _process(_delta):
 	$"Coin Amount".text = str(global.coins)
+	$Debug.visible = global.debug
 
 func _on_Player_update_healthbar(amount):
 	heart = heart.duplicate()
