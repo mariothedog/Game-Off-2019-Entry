@@ -1,7 +1,7 @@
 extends Control
 
 func _process(delta):
-	if $Label.rect_position.y >= -2200:
+	if $Label.rect_position.y >= -2300:
 		$Label.rect_position.y -= 40 * delta
 	else:
 		pass
@@ -20,6 +20,9 @@ func _on_gerobakberkah_pressed():
 
 func _on_bakudas_pressed():
 	var _u = OS.shell_open("https://bakudas.itch.io/generic-platformer-pack")
+
+func _on_rvros_pressed():
+	var _u = OS.shell_open("https://rvros.itch.io/animated-pixel-hero")
 
 func _on_Puddin_pressed():
 	var _u = OS.shell_open("https://opengameart.org/content/rotating-coin")

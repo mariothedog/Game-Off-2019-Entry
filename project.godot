@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game-Off-2019-Entry"
+config/name="Leap and Sweep"
 run/main_scene="res://Scenes/Main Menu.tscn"
 config/icon="res://icon.png"
 

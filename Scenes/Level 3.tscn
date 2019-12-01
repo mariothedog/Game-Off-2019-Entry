@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Code/Level 2.gd" type="Script" id=1]
 [ext_resource path="res://Art/Tiles/Tile Sheet.png" type="Texture" id=2]
@@ -6,9 +6,13 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Pit_Sensor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Audio/Track_1.ogg" type="AudioStream" id=7]
-[ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/Track_1.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/Sky.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Sign.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/enemies/Eye Demon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Checkpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Complete Level.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -161,7 +165,7 @@ script = ExtResource( 1 )
 z_index = -2
 tile_set = SubResource( 9 )
 format = 1
-tile_data = PoolIntArray( 65527, 3, 0, 65528, 1, 0, 65529, 1, 0, 65530, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 536870915, 0, 131063, 4, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 196599, 4, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 262135, 5, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0 )
+tile_data = PoolIntArray( -327687, 3, 0, -327686, 1, 0, -327685, 536870915, 0, -393191, 3, 0, -393190, 1, 0, -262151, 5, 0, -262150, 0, 0, -262149, 536870917, 0, -327655, 5, 0, -327654, 536870917, 0, -262124, 3, 0, -262123, 1, 0, -262122, 536870915, 0, -196594, 3, 0, -196593, 536870915, 0, -196588, 4, 0, -196587, 0, 0, -196586, 536870916, 0, -131058, 4, 0, -131057, 536870916, 0, -131052, 5, 0, -131051, 0, 0, -131050, 536870917, 0, -65534, 3, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 536870915, 0, -65524, 3, 0, -65523, 1, 0, -65522, 0, 0, -65521, 536870917, 0, 65527, 3, 0, 65528, 1, 0, 65529, 1, 0, 65530, 2, 0, 65531, 1, 0, 65532, 1, 0, 65533, 536870915, 0, 2, 5, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 536870917, 0, 12, 5, 0, 13, 0, 0, 14, 536870917, 0, 131063, 4, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 536870916, 0, 196599, 4, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 536870916, 0, 262135, 5, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 536870917, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -355, -50 )
@@ -184,23 +188,78 @@ shape = SubResource( 10 )
 
 [node name="Coins" type="Node2D" parent="."]
 
+[node name="Coin" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( -410, -420 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( -355, -420 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( -300, -420 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 200, -80 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 380, -78 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 870, -80 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 970, -210 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1040, -99 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1320, -270 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1150, -440 )
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1380, -270 )
+
+[node name="Coin12" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 1440, -270 )
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -5.0
 autoplay = true
 
-[node name="Sky" parent="." instance=ExtResource( 8 )]
+[node name="Sky" parent="." instance=ExtResource( 9 )]
 
 [node name="Signs" type="Node2D" parent="."]
 
+[node name="Sign" parent="Signs" instance=ExtResource( 10 )]
+position = Vector2( -200, -20 )
+text = "You can now access the shop."
+
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Eye Demon" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 810, -79 )
+MAX_DIST = 200.0
+
+[node name="Eye Demon2" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 930, -210 )
+RATIO_SHOT = 1.5
+MAX_DIST = 300.0
 
 [node name="Traps" type="Node2D" parent="."]
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
-[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 9 )]
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 12 )]
 position = Vector2( -355, 5 )
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 12 )]
+position = Vector2( 1010, -186 )
+
+[node name="Complete Level" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1690, -380 )
 
 [connection signal="jump" from="Player" to="." method="_on_Player_jump"]
 [connection signal="update_healthbar" from="Player" to="HUD" method="_on_Player_update_healthbar"]

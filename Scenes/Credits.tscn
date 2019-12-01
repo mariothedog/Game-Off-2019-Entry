@@ -29,9 +29,9 @@ current = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = -450.0
-margin_top = -250.0
+margin_top = -10.0
 margin_right = 402.0
-margin_bottom = 1801.0
+margin_bottom = 2041.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
@@ -43,6 +43,7 @@ text = "Code
 
 
 Art
+
 
 
 
@@ -135,11 +136,25 @@ enabled_focus_mode = 0
 text = "Tiles - bakudas"
 flat = true
 
-[node name="Puddin" type="Button" parent="Label"]
-margin_left = 236.0
+[node name="rvros" type="Button" parent="Label"]
+margin_left = 206.0
 margin_top = 670.0
-margin_right = 613.0
+margin_right = 647.0
 margin_bottom = 752.0
+focus_mode = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.494118, 0.494118, 0.494118, 1 )
+custom_colors/font_color_pressed = Color( 0.882353, 0.882353, 0.882353, 1 )
+enabled_focus_mode = 0
+text = "Player - rvros"
+flat = true
+
+[node name="Puddin" type="Button" parent="Label"]
+margin_left = 230.0
+margin_top = 760.0
+margin_right = 620.0
+margin_bottom = 842.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -150,10 +165,10 @@ text = "Coin - Puddin"
 flat = true
 
 [node name="kenney" type="Button" parent="Label"]
-margin_left = 136.0
-margin_top = 760.0
-margin_right = 741.0
-margin_bottom = 842.0
+margin_left = 130.0
+margin_top = 850.0
+margin_right = 735.0
+margin_bottom = 932.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -164,10 +179,10 @@ text = "Jump Bar - kenney.nl"
 flat = true
 
 [node name="shinzohotoroki" type="Button" parent="Label"]
-margin_left = 116.0
-margin_top = 860.0
-margin_right = 761.0
-margin_bottom = 942.0
+margin_left = 110.0
+margin_top = 950.0
+margin_right = 755.0
+margin_bottom = 1032.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -178,10 +193,10 @@ text = "Heart - shinzohotoroki"
 flat = true
 
 [node name="DaveB" type="Button" parent="Label"]
-margin_left = -4.0
-margin_top = 960.0
-margin_right = 929.0
-margin_bottom = 1042.0
+margin_left = -10.0
+margin_top = 1050.0
+margin_right = 923.0
+margin_bottom = 1132.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -192,9 +207,10 @@ text = "Heart Shatter Animation - DaveB"
 flat = true
 
 [node name="Iqdev" type="Button" parent="Label"]
-margin_top = 1050.0
-margin_right = 933.0
-margin_bottom = 1132.0
+margin_left = -6.0
+margin_top = 1140.0
+margin_right = 927.0
+margin_bottom = 1222.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -205,10 +221,10 @@ text = "Heart Appear Animation - Iqdev"
 flat = true
 
 [node name="Angelee" type="Button" parent="Label"]
-margin_left = -4.0
-margin_top = 1150.0
-margin_right = 929.0
-margin_bottom = 1232.0
+margin_left = -10.0
+margin_top = 1240.0
+margin_right = 923.0
+margin_bottom = 1322.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -219,10 +235,10 @@ text = "Sign Box - Angelee"
 flat = true
 
 [node name="bevouliin" type="Button" parent="Label"]
-margin_left = -14.0
-margin_top = 1260.0
-margin_right = 919.0
-margin_bottom = 1342.0
+margin_left = -20.0
+margin_top = 1350.0
+margin_right = 913.0
+margin_bottom = 1432.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -234,9 +250,9 @@ flat = true
 
 [node name="gerobakberkah" type="Button" parent="Label"]
 margin_left = 206.0
-margin_top = 1512.0
+margin_top = 1610.0
 margin_right = 644.0
-margin_bottom = 1594.0
+margin_bottom = 1692.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -248,9 +264,9 @@ flat = true
 
 [node name="cdrk" type="Button" parent="Label"]
 margin_left = 96.0
-margin_top = 1610.0
+margin_top = 1692.0
 margin_right = 791.0
-margin_bottom = 1692.0
+margin_bottom = 1774.0
 focus_mode = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -280,6 +296,7 @@ text = "Exit"
 [connection signal="pressed" from="Label/vallemrv" to="." method="_on_vallemrv_pressed"]
 [connection signal="pressed" from="Label/aZamBie2" to="." method="_on_aZamBie_pressed"]
 [connection signal="pressed" from="Label/bakudas" to="." method="_on_bakudas_pressed"]
+[connection signal="pressed" from="Label/rvros" to="." method="_on_rvros_pressed"]
 [connection signal="pressed" from="Label/Puddin" to="." method="_on_Puddin_pressed"]
 [connection signal="pressed" from="Label/kenney" to="." method="_on_kenney_pressed"]
 [connection signal="pressed" from="Label/shinzohotoroki" to="." method="_on_shinzohotoroki_pressed"]
